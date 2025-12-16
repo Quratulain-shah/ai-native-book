@@ -1,7 +1,17 @@
 {
   "permissions": {
     "allow": [
-      "Bash(.specify/scripts/powershell/check-prerequisites.ps1 -Json -PathsOnly)"
+      "Bash(.specify/scripts/powershell/check-prerequisites.ps1 -Json -PathsOnly)",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -File \".specify/scripts/powershell/check-prerequisites.ps1\" -Json -PathsOnly)",
+      "Bash(powershell.exe -ExecutionPolicy Bypass -File \".specify/scripts/powershell/check-prerequisites.ps1\" -Json -RequireTasks -IncludeTasks)",
+      "Bash(powershell -ExecutionPolicy Bypass -File \".specify/scripts/powershell/check-prerequisites.ps1\" -Json -RequireTasks -IncludeTasks)",
+      "Bash(if [ -d \"specs/1-physical-ai-textbook/checklists\" ])",
+      "Bash(then ls -la specs/1-physical-ai-textbook/checklists/)",
+      "Bash(else echo \"No checklists directory found\")",
+      "Bash(fi)",
+      "Bash(npm run build)",
+      "Bash(npm run clear)",
+      "Bash(cat -A)"
     ]
   }
 }
