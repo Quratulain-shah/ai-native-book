@@ -1,7 +1,7 @@
 Mendatory
 Phase 1: book content
 Phase 2: Minimilistic FastAPI backend with OpenAI Agents SDK having single endpoint "/chat"
-Phase 3: Integration of Chatbot (chatkit) on UI and connect with FastAPI Backend
+Phase 3: Integration of Chatbot (open ai chatkit) on UI and connect with FastAPI Backend
 Phase 4: Enhancement and consistency In UI (professional robotics theme)
 Phase 5: Use Qdrant cloud and make a tool which OpenAI Agent uses for RAG purpose. Also sync your book content into vectordb.
 
