@@ -1,0 +1,153 @@
+# API Contract: Authentication Service
+
+## Overview
+Authentication service for the Physical AI & Humanoid Robotics textbook, providing user registration, login, and session management using Better-Auth.com integration.
+
+## Base URL
+`/api/auth`
+
+## Authentication
+All endpoints except `/register` and `/login` require a valid JWT token in the Authorization header:
+```
+Authorization: Bearer {jwt_token}
+```
+
+## Endpoints
+
+### POST /register
+Register a new user account.
+
+#### Request
+```json
+{
+  "email": "user@example.com",
+  "password": "secure_password_123",
+  "name": "John Doe",
+  "role": "student"
+}
+```
+
+#### Response
+**201 Created**
+```json
+{
+  "id": "user_1234567890",
+  "email": "user@example.com",
+  "name": "John Doe",
+  "role": "student",
+  "created_at": "2025-12-16T10:30:00Z",
+  "token": "jwt_token_here"
+}
+```
+
+**400 Bad Request** - Invalid input
+**409 Conflict** - User already exists
+
+### POST /login
+Authenticate user and return JWT token.
+
+#### Request
+```json
+{
+  "email": "user@example.com",
+  "password": "secure_password_123"
+}
+```
+
+#### Response
+**200 OK**
+```json
+{
+  "id": "user_1234567890",
+  "email": "user@example.com",
+  "name": "John Doe",
+  "role": "student",
+  "token": "jwt_token_here",
+  "current_module": 1
+}
+```
+
+**401 Unauthorized** - Invalid credentials
+
+### GET /profile
+Get current user profile information.
+
+#### Response
+**200 OK**
+```json
+{
+  "id": "user_1234567890",
+  "email": "user@example.com",
+  "name": "John Doe",
+  "role": "student",
+  "enrollment_status": "active",
+  "current_module": 1,
+  "created_at": "2025-12-16T10:30:00Z",
+  "last_accessed": "2025-12-16T15:45:00Z"
+}
+```
+
+### PUT /profile
+Update user profile information.
+
+#### Request
+```json
+{
+  "name": "John Smith",
+  "personalization_preferences": {
+    "language": "en",
+    "accessibility_settings": {
+      "high_contrast": false,
+      "larger_text": true
+    }
+  }
+}
+```
+
+#### Response
+**200 OK**
+```json
+{
+  "id": "user_1234567890",
+  "email": "user@example.com",
+  "name": "John Smith",
+  "role": "student",
+  "personalization_preferences": {
+    "language": "en",
+    "accessibility_settings": {
+      "high_contrast": false,
+      "larger_text": true
+    }
+  }
+}
+```
+
+### POST /logout
+End current user session.
+
+#### Response
+**200 OK**
+```json
+{
+  "message": "Successfully logged out"
+}
+```
+
+## Error Response Format
+All error responses follow this format:
+```json
+{
+  "error": {
+    "code": "ERROR_CODE",
+    "message": "Human-readable error message",
+    "details": "Additional error details if applicable"
+  }
+}
+```
+
+## Common Error Codes
+- `INVALID_INPUT`: Request data doesn't match expected format
+- `UNAUTHORIZED`: Missing or invalid authentication token
+- `NOT_FOUND`: Requested resource doesn't exist
+- `CONFLICT`: Request conflicts with existing data
+- `INTERNAL_ERROR`: Server-side error occurred

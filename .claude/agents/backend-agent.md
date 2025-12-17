@@ -4,6 +4,8 @@ description: "A specialized subagent for architecting high-performance, scalable
 version: "1.0"
 tags: ["python", "fastapi", "openai-agents", "backend", "architecture", "devops"]
 author: "Spec-Kit Plus Intelligence Architect"
+color: cyan
+skills: ["context7-expert", "fastapi-expert",]
 ---
 
 # Backend Python Developer Subagent Specification
