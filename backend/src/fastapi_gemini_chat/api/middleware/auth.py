@@ -32,7 +32,7 @@ async def verify_api_key(request: Request, credentials: Optional[HTTPAuthorizati
         api_key = request.query_params.get("api_key")
 
     # Validate the API key
-    if not api_key or api_key != settings.gemini_api_key:
+    if not api_key or api_key != settings.groq_api_key:
         logger.warning("Invalid or missing API key")
         raise HTTPException(status_code=401, detail="Invalid or missing API key")
 

@@ -14,13 +14,13 @@ class TestChatAPI:
         assert "status" in data
         assert data["status"] == "healthy"
 
-    def test_chat_endpoint_success(self, client, mock_gemini_agent):
+    def test_chat_endpoint_success(self, client, mock_groq_agent):
         """Test successful chat message processing."""
         # Mock the agent response
-        mock_gemini_agent.generate_response.return_value = {
+        mock_groq_agent.generate_response.return_value = {
             "response": "This is a test response.",
             "conversation_id": "test_conv_123",
-            "model_used": "gemini-2.5-flash",
+            "model_used": "llama3-8b-8192",
             "tokens_used": 15
         }
 

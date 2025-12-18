@@ -11,10 +11,10 @@ class Settings(BaseSettings):
     api_port: int = int(os.getenv("API_PORT", "8000"))
     api_debug: bool = os.getenv("API_DEBUG", "false").lower() == "true"
 
-    # Gemini Configuration
-    gemini_api_key: str = os.getenv("GEMINI_API_KEY", "")
-    gemini_model: str = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
-    gemini_base_url: str = os.getenv("GEMINI_BASE_URL", "https://generativelanguage.googleapis.com/v1beta/openai/")
+    # Groq Configuration
+    groq_api_key: str = os.getenv("GROQ_API_KEY", "")
+    groq_model: str = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")  # Free tier model
+    groq_base_url: str = os.getenv("GROQ_BASE_URL", "https://api.groq.com/openai/v1")
 
     # Application Configuration
     allowed_origins: str = os.getenv("ALLOWED_ORIGINS", "*")
@@ -22,12 +22,17 @@ class Settings(BaseSettings):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        # Validate required settings
-        if not self.gemini_api_key:
-            raise ValueError("GEMINI_API_KEY environment variable is required")
+        # Validate required settings (only in production/non-debug mode)
+        # Skip validation if in debug mode to allow testing without API key
+        import os
+        api_debug = os.getenv("API_DEBUG", "false").lower() == "true"
+        if not api_debug:
+            if not self.groq_api_key:
+                raise ValueError("GROQ_API_KEY environment variable is required")
 
     class Config:
         env_file = ".env"
+        extra = "ignore"  # Allow extra environment variables
 
 
 # Global settings instance

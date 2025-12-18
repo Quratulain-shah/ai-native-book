@@ -4,7 +4,7 @@ from datetime import datetime
 
 from ..models.request import MessageRequest
 from ..models.response import MessageResponse
-from .agent import gemini_agent
+from .agent import groq_agent
 
 
 logger = logging.getLogger(__name__)
@@ -15,7 +15,7 @@ class ChatService:
 
     def __init__(self):
         """Initialize the chat service."""
-        self.agent = gemini_agent
+        self.agent = groq_agent
 
     async def process_message(self, request: MessageRequest) -> MessageResponse:
         """

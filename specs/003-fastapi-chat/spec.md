@@ -1,9 +1,9 @@
-# Feature Specification: FastAPI Chat Backend with Gemini Integration
+# Feature Specification: FastAPI Chat Backend with Groq Integration
 
 **Feature Branch**: `003-fastapi-chat`
 **Created**: 2025-12-17
 **Status**: Draft
-**Input**: User description: "Create a specification for a fastapi-backend in the 'backend' directory. The goal is to establish the foundation for our chatbot service. We need: 1. A FastAPI application served using `uv` with a single endpoint `POST /chat`. 2. The endpoint must accept a user message payload and return an AI-generated response. 3. The AI logic must be implemented using the `openai-agents` SDK. 4. CRITICAL CONFIGURATION: The agent must use the 'gemini-2.5-flash' model. This requires configuring the `OpenAIChatCompletionsModel` class from the SDK to point to the Gemini API (using the appropriate base URL and GEMINI_API_KEY), rather than using default OpenAI endpoints. 5. No database or RAG is needed for this phase; focus strictly on setting up the API plumbing and the Gemini integration."
+**Input**: User description: "Create a specification for a fastapi-backend in the 'backend' directory. The goal is to establish the foundation for our chatbot service. We need: 1. A FastAPI application served using `uv` with a single endpoint `POST /chat`. 2. The endpoint must accept a user message payload and return an AI-generated response. 3. The AI logic must be implemented using the `openai-agents` SDK. 4. CRITICAL CONFIGURATION: The agent must use the 'llama3-8b-8192' model. This requires configuring the `OpenAIChatCompletionsModel` class from the SDK to point to the Groq API (using the appropriate base URL and GROQ_API_KEY), rather than using default OpenAI endpoints. 5. No database or RAG is needed for this phase; focus strictly on setting up the API plumbing and the Groq integration."
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -56,22 +56,22 @@ As a developer, I want the chat endpoint to handle various message formats so th
 - What happens when the AI service is temporarily unavailable or responds with an error?
 - How does the system handle extremely long input messages that exceed API limits?
 - What occurs when invalid JSON is sent to the /chat endpoint?
-- How does the system respond when the Gemini API returns unexpected or malformed responses?
+- How does the system respond when the Groq API returns unexpected or malformed responses?
 
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
 
 - **FR-001**: System MUST expose a POST /chat endpoint that accepts JSON payloads containing user messages
-- **FR-002**: System MUST process incoming messages using an AI agent powered by the gemini-2.5-flash model
+- **FR-002**: System MUST process incoming messages using an AI agent powered by the llama3-8b-8192 model
 - **FR-003**: System MUST return AI-generated responses in JSON format within 10 seconds
 - **FR-004**: System MUST validate incoming message format and return appropriate error responses for invalid input
 - **FR-005**: System MUST handle authentication for API access to prevent unauthorized usage
 - **FR-006**: System MUST be deployable using uv as the package manager and server runner
-- **FR-007**: System MUST integrate with the openai-agents SDK configured to work with the Gemini API instead of OpenAI endpoints
-- **FR-008**: System MUST use the OpenAIChatCompletionsModel class with custom configuration pointing to Gemini API
-- **FR-009**: System MUST accept a GEMINI_API_KEY environment variable for authentication with the Gemini service
-- **FR-010**: System MUST gracefully handle API errors from the Gemini service and return appropriate responses to clients
+- **FR-007**: System MUST integrate with the openai-agents SDK configured to work with the Groq API instead of OpenAI endpoints
+- **FR-008**: System MUST use the OpenAIChatCompletionsModel class with custom configuration pointing to Groq API
+- **FR-009**: System MUST accept a GROQ_API_KEY environment variable for authentication with the Groq service
+- **FR-010**: System MUST gracefully handle API errors from the Groq service and return appropriate responses to clients
 
 ### Key Entities *(include if feature involves data)*
 

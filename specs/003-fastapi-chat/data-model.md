@@ -1,6 +1,6 @@
-# Data Model: FastAPI Chat Backend with Gemini Integration
+# Data Model: FastAPI Chat Backend with Groq Integration
 
-**Feature**: FastAPI Chat Backend with Gemini Integration
+**Feature**: FastAPI Chat Backend with Groq Integration
 **Date**: 2025-12-17
 **Modeler**: Claude Code
 
@@ -44,7 +44,7 @@
   "response": "Hello! I'm doing well, thank you for asking. How can I assist you today?",
   "conversation_id": "123e4567-e89b-12d3-a456-426614174000",
   "timestamp": "2025-12-17T10:00:05Z",
-  "model_used": "gemini-2.5-flash",
+  "model_used": "llama3-8b-8192",
   "tokens_used": {
     "input_tokens": 15,
     "output_tokens": 32
@@ -74,9 +74,9 @@
 ### 3.1 Environment Variables
 | Variable | Type | Required | Description |
 |----------|------|----------|-------------|
-| GEMINI_API_KEY | string | Yes | API key for accessing Gemini service |
-| GEMINI_BASE_URL | string | No | Base URL for Gemini API (default: Google's endpoint) |
-| MODEL_NAME | string | No | Model name to use (default: gemini-2.5-flash) |
+| GROQ_API_KEY | string | Yes | API key for accessing Groq service |
+| GROQ_BASE_URL | string | No | Base URL for Groq API (default: https://api.groq.com/openai/v1) |
+| MODEL_NAME | string | No | Model name to use (default: llama3-8b-8192) |
 | API_TIMEOUT | integer | No | Request timeout in seconds (default: 30) |
 | MAX_MESSAGE_LENGTH | integer | No | Maximum allowed message length (default: 10000) |
 
@@ -94,7 +94,7 @@
 2. Request validated against MessageRequest schema
 3. API key validated for authentication
 4. MessageRequest processed by agent service
-5. Agent generates response using configured model
+5. Agent generates response using configured Groq model
 6. Response formatted as MessageResponse
 7. MessageResponse returned to client
 

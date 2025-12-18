@@ -1,21 +1,21 @@
 import pytest
 from unittest.mock import Mock, patch, AsyncMock
-from fastapi_gemini_chat.services.agent import GeminiAgent
+from fastapi_gemini_chat.services.agent import GroqAgent
 
 
-class TestGeminiAgent:
-    """Unit tests for the GeminiAgent class."""
+class TestGroqAgent:
+    """Unit tests for the GroqAgent class."""
 
     def test_agent_initialization(self):
         """Test that the agent initializes with proper configuration."""
-        agent = GeminiAgent()
+        agent = GroqAgent()
         assert agent.model is not None
         assert agent.client is not None
 
     @pytest.mark.asyncio
     async def test_generate_response(self):
         """Test that generate_response method works correctly."""
-        agent = GeminiAgent()
+        agent = GroqAgent()
 
         # Mock the OpenAI client's chat completions create method
         mock_response = Mock()
@@ -36,9 +36,9 @@ class TestGeminiAgent:
 
     def test_validate_config_valid(self):
         """Test that validate_config returns True when configuration is valid."""
-        agent = GeminiAgent()
+        agent = GroqAgent()
         # This test depends on the environment being properly configured
         # In a real test, we'd mock the settings
         result = agent.validate_config()
-        # Note: This will be True if GEMINI_API_KEY is set in the environment
+        # Note: This will be True if GROQ_API_KEY is set in the environment
         assert isinstance(result, bool)

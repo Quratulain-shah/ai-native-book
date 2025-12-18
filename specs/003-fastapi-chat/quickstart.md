@@ -1,16 +1,16 @@
-# Quickstart Guide: FastAPI Chat Backend with Gemini Integration
+# Quickstart Guide: FastAPI Chat Backend with Groq Integration
 
-**Feature**: FastAPI Chat Backend with Gemini Integration
+**Feature**: FastAPI Chat Backend with Groq Integration
 **Date**: 2025-12-17
 **Version**: 1.0
 
 ## Overview
-This guide provides quick setup instructions for the FastAPI-based chat backend that integrates with the Gemini 2.5 Flash model using the OpenAI Agents SDK.
+This guide provides quick setup instructions for the FastAPI-based chat backend that integrates with the Llama3-8b-8192 model using the OpenAI Agents SDK.
 
 ## Prerequisites
 - Python 3.12 or higher
 - `uv` package manager installed
-- Valid GEMINI_API_KEY from Google AI Studio
+- Valid GROQ_API_KEY from Groq Cloud
 
 ## Installation
 
@@ -35,15 +35,15 @@ uv pip install -e .
 # Copy the example environment file
 cp .env.example .env
 
-# Edit .env and add your Gemini API key
+# Edit .env and add your Groq API key
 nano .env  # or use your preferred editor
 ```
 
 Example `.env` file:
 ```
-GEMINI_API_KEY=your_actual_gemini_api_key_here
-GEMINI_BASE_URL=https://generativelanguage.googleapis.com/v1beta
-MODEL_NAME=gemini-2.5-flash
+GROQ_API_KEY=your_actual_groq_api_key_here
+GROQ_BASE_URL=https://api.groq.com/openai/v1
+MODEL_NAME=llama3-8b-8192
 API_TIMEOUT=30
 MAX_MESSAGE_LENGTH=10000
 ```
@@ -74,7 +74,7 @@ uv run uvicorn backend.src.main:app --host 0.0.0.0 --port 8000
 ```bash
 curl -X POST http://localhost:8000/chat \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $GEMINI_API_KEY" \
+  -H "Authorization: Bearer $GROQ_API_KEY" \
   -d '{
     "message": "Hello, how are you?",
     "conversation_id": "123e4567-e89b-12d3-a456-426614174000"
@@ -87,7 +87,7 @@ curl -X POST http://localhost:8000/chat \
   "response": "Hello! I'm doing well, thank you for asking. How can I assist you today?",
   "conversation_id": "123e4567-e89b-12d3-a456-426614174000",
   "timestamp": "2025-12-17T10:00:05Z",
-  "model_used": "gemini-2.5-flash",
+  "model_used": "llama3-8b-8192",
   "tokens_used": {
     "input_tokens": 15,
     "output_tokens": 32
@@ -127,7 +127,7 @@ backend/
 │   │   ├── request.py       # Request models (MessageRequest)
 │   │   └── response.py      # Response models (MessageResponse)
 │   ├── services/
-│   │   ├── agent.py         # Agent logic with Gemini integration
+│   │   ├── agent.py         # Agent logic with Groq integration
 │   │   └── chat_service.py  # Chat service orchestrator
 │   └── api/
 │       └── routes/
@@ -144,9 +144,9 @@ backend/
 
 | Environment Variable | Default | Description |
 |---------------------|---------|-------------|
-| GEMINI_API_KEY | - | Required API key for Gemini service |
-| GEMINI_BASE_URL | https://generativelanguage.googleapis.com/v1beta | Gemini API base URL |
-| MODEL_NAME | gemini-2.5-flash | Model to use for responses |
+| GROQ_API_KEY | - | Required API key for Groq service |
+| GROQ_BASE_URL | https://api.groq.com/openai/v1 | Groq API base URL |
+| MODEL_NAME | llama3-8b-8192 | Model to use for responses |
 | API_TIMEOUT | 30 | Request timeout in seconds |
 | MAX_MESSAGE_LENGTH | 10000 | Maximum message length allowed |
 
@@ -155,12 +155,12 @@ backend/
 ### Common Issues
 
 1. **API Key Error**
-   - Ensure GEMINI_API_KEY is properly set in environment
+   - Ensure GROQ_API_KEY is properly set in environment
    - Verify the API key is valid and has proper permissions
 
 2. **Connection Timeout**
    - Check internet connectivity
-   - Verify Gemini API endpoints are accessible
+   - Verify Groq API endpoints are accessible
    - Adjust API_TIMEOUT if needed
 
 3. **Validation Errors**

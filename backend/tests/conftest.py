@@ -11,9 +11,9 @@ def client():
     # Import the app creation inside the fixture to ensure patches are applied first
     with patch('fastapi_gemini_chat.config.settings') as mock_settings:
         # Configure the mock settings
-        mock_settings.gemini_api_key = "test_key_for_testing"
-        mock_settings.gemini_model = "gemini-2.5-flash"
-        mock_settings.gemini_base_url = "https://generativelanguage.googleapis.com/v1beta/openai/"
+        mock_settings.groq_api_key = "test_key_for_testing"
+        mock_settings.groq_model = "llama-3.1-8b-instant"
+        mock_settings.groq_base_url = "https://api.groq.com/openai/v1"
         mock_settings.api_host = "0.0.0.0"
         mock_settings.api_port = 8000
         mock_settings.api_debug = False
@@ -28,13 +28,13 @@ def client():
 
 
 @pytest.fixture
-def mock_gemini_agent():
-    """Mock the Gemini agent to avoid actual API calls during testing."""
-    with patch('fastapi_gemini_chat.services.agent.gemini_agent') as mock_agent:
+def mock_groq_agent():
+    """Mock the Groq agent to avoid actual API calls during testing."""
+    with patch('fastapi_gemini_chat.services.agent.groq_agent') as mock_agent:
         mock_agent.generate_response.return_value = {
             "response": "This is a test response from the mock agent.",
             "conversation_id": "test_conv_123",
-            "model_used": "gemini-2.5-flash",
+            "model_used": "llama3-8b-8192",
             "tokens_used": 10
         }
         yield mock_agent
