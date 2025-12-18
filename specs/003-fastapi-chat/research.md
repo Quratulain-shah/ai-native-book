@@ -1,6 +1,6 @@
-# Research: FastAPI Chat Backend with Gemini Integration
+# Research: FastAPI Chat Backend with Groq Integration
 
-**Feature**: FastAPI Chat Backend with Gemini Integration
+**Feature**: FastAPI Chat Backend with Groq Integration
 **Date**: 2025-12-17
 **Researcher**: Claude Code
 
@@ -15,23 +15,23 @@
 
 ### 1.2 OpenAI Agents SDK Integration
 - The openai-agents SDK provides Agent class for creating AI agents
-- OpenAIChatCompletionsModel can be configured with custom base_url to point to Gemini API
-- Need to set appropriate headers for Gemini authentication
+- OpenAIChatCompletionsModel can be configured with custom base_url to point to Groq API
+- Need to set appropriate headers for Groq authentication
 - Configuration should be done through environment variables
 
-### 1.3 Gemini API Integration
-- Gemini 2.5 Flash model is available through Google's API
-- Requires GEMINI_API_KEY for authentication
-- Base URL needs to be configured to Google's API endpoint
+### 1.3 Groq API Integration
+- Llama3-8b-8192 model is available through Groq's API
+- Requires GROQ_API_KEY for authentication
+- Base URL needs to be configured to Groq's API endpoint
 - Request/response format may differ slightly from OpenAI format
 
 ## 2. Technical Investigation
 
-### 2.1 OpenAI SDK Configuration for Gemini
-The OpenAI SDK can be configured to work with Gemini by:
-- Setting base_url to Gemini API endpoint (e.g., "https://generativelanguage.googleapis.com/v1beta")
-- Using GEMINI_API_KEY in the Authorization header
-- Mapping model names appropriately (gemini-2.5-flash)
+### 2.1 OpenAI SDK Configuration for Groq
+The OpenAI SDK can be configured to work with Groq by:
+- Setting base_url to Groq API endpoint (e.g., "https://api.groq.com/openai/v1")
+- Using GROQ_API_KEY in the Authorization header
+- Mapping model names appropriately (llama3-8b-8192)
 
 ### 2.2 FastAPI Project Structure
 Recommended structure follows FastAPI best practices:
@@ -88,11 +88,11 @@ Recommended structure follows FastAPI best practices:
 ## 6. Implementation Risks
 
 ### 6.1 API Compatibility
-Risk: Differences between OpenAI and Gemini API formats
+Risk: Differences between OpenAI and Groq API formats
 Mitigation: Thorough testing and proper mapping of request/response formats
 
 ### 6.2 Rate Limiting
-Risk: Gemini API rate limits affecting service availability
+Risk: Groq API rate limits affecting service availability
 Mitigation: Implement proper error handling and retry logic
 
 ### 6.3 Authentication

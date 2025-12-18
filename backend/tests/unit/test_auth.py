@@ -24,7 +24,7 @@ class TestAuthMiddleware:
 
         # Mock the settings object from the config module
         with patch("fastapi_gemini_chat.config.settings") as mock_settings:
-            mock_settings.gemini_api_key = "test_key_for_testing"
+            mock_settings.groq_api_key = "test_key_for_testing"
 
             # This should not raise an exception
             result = await verify_api_key(mock_request, mock_credentials)
@@ -43,7 +43,7 @@ class TestAuthMiddleware:
 
         # Mock the settings object from the config module
         with patch("fastapi_gemini_chat.config.settings") as mock_settings:
-            mock_settings.gemini_api_key = "valid_key"
+            mock_settings.groq_api_key = "valid_key"
 
             # This should raise an HTTPException
             with pytest.raises(HTTPException) as exc_info:
@@ -63,7 +63,7 @@ class TestAuthMiddleware:
 
         # Mock the settings object from the config module
         with patch("fastapi_gemini_chat.config.settings") as mock_settings:
-            mock_settings.gemini_api_key = "test_key_for_testing"
+            mock_settings.groq_api_key = "test_key_for_testing"
 
             # This should not raise an exception
             result = await verify_api_key(mock_request, mock_credentials)
@@ -82,7 +82,7 @@ class TestAuthMiddleware:
 
         # Mock the settings object from the config module
         with patch("fastapi_gemini_chat.config.settings") as mock_settings:
-            mock_settings.gemini_api_key = "valid_key"
+            mock_settings.groq_api_key = "valid_key"
 
             # This should raise an HTTPException
             with pytest.raises(HTTPException) as exc_info:
@@ -102,7 +102,7 @@ class TestAuthMiddleware:
 
         # Mock the settings object from the config module
         with patch("fastapi_gemini_chat.config.settings") as mock_settings:
-            mock_settings.gemini_api_key = "valid_key"
+            mock_settings.groq_api_key = "valid_key"
 
             # This should raise an HTTPException
             with pytest.raises(HTTPException) as exc_info:

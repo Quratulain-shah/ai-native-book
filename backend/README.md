@@ -1,11 +1,11 @@
-# FastAPI Gemini Chat Backend
+# FastAPI Groq Chat Backend
 
-A FastAPI-based chat backend that integrates with Google's Gemini model through the OpenAI SDK.
+A FastAPI-based chat backend that integrates with Groq's model through the OpenAI SDK.
 
 ## Features
 
 - FastAPI-based REST API with async support
-- Integration with Google Gemini model (gemini-2.5-flash) via OpenAI SDK
+- Integration with Groq model (llama3-8b-8192) via OpenAI SDK
 - API key authentication with Bearer token or query parameter support
 - Comprehensive request/response validation using Pydantic
 - Async-first implementation for high performance
@@ -138,9 +138,9 @@ Successful responses return a JSON object with:
 
 ## Environment Variables
 
-- `GEMINI_API_KEY` (required): Your Google Gemini API key
-- `GEMINI_MODEL`: The Gemini model to use (default: gemini-2.5-flash)
-- `GEMINI_BASE_URL`: Base URL for Gemini API (default: https://generativelanguage.googleapis.com/v1beta/openai/)
+- `GROQ_API_KEY` (required): Your Groq API key
+- `GROQ_MODEL`: The Groq model to use (default:llama-3.1-8b-instant )
+- `GROQ_BASE_URL`: Base URL for Groq API (default: https://api.groq.com/openai/v1)
 - `API_HOST`: Host to bind to (default: 0.0.0.0)
 - `API_PORT`: Port to bind to (default: 8000)
 - `API_DEBUG`: Enable debug mode (default: false)
@@ -181,7 +181,7 @@ backend/
 │   │   ├── request.py       # Request models (MessageRequest)
 │   │   └── response.py      # Response models (MessageResponse)
 │   ├── services/
-│   │   ├── agent.py         # Agent logic with Gemini integration
+│   │   ├── agent.py         # Agent logic with Groq integration
 │   │   └── chat_service.py  # Chat service orchestrator
 │   └── api/
 │       ├── middleware/

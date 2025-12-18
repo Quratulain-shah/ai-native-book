@@ -21,7 +21,7 @@ class TestChatService:
         service.agent.generate_response = AsyncMock(return_value={
             "response": "Test response from agent",
             "conversation_id": "test_conv_123",
-            "model_used": "gemini-2.5-flash",
+            "model_used": "llama3-8b-8192",
             "tokens_used": 20
         })
 
@@ -30,7 +30,7 @@ class TestChatService:
 
         assert response.response == "Test response from agent"
         assert response.conversation_id == "test_conv_123"
-        assert response.model_used == "gemini-2.5-flash"
+        assert response.model_used == "llama3-8b-8192"
         assert response.tokens_used == 20
 
     @pytest.mark.asyncio

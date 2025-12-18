@@ -10,20 +10,20 @@ from ..config import settings
 logger = logging.getLogger(__name__)
 
 
-class GeminiAgent:
+class GroqAgent:
     """
-    Agent that uses OpenAI SDK to connect to Google's Gemini API.
+    Agent that uses OpenAI SDK to connect to Groq's API.
 
-    This class configures the OpenAI client to work with Gemini's API
+    This class configures the OpenAI client to work with Groq's API
     using the OpenAI-compatible endpoint.
     """
 
     def __init__(self):
-        """Initialize the Gemini agent with proper configuration."""
-        self.model = settings.gemini_model
+        """Initialize the Groq agent with proper configuration."""
+        self.model = settings.groq_model
         self.client = OpenAI(
-            base_url=settings.gemini_base_url,
-            api_key=settings.gemini_api_key,
+            base_url=settings.groq_base_url,
+            api_key=settings.groq_api_key,
             # Configure HTTP client with reasonable timeouts
             http_client=httpx.Client(
                 timeout=httpx.Timeout(30.0, connect=5.0),
@@ -83,8 +83,8 @@ class GeminiAgent:
             }
 
         except Exception as e:
-            logger.error(f"Gemini API error: {str(e)}", exc_info=True)
-            raise RuntimeError(f"Failed to get response from Gemini: {str(e)}")
+            logger.error(f"Groq API error: {str(e)}", exc_info=True)
+            raise RuntimeError(f"Failed to get response from Groq: {str(e)}")
 
     def validate_config(self) -> bool:
         """
@@ -94,12 +94,12 @@ class GeminiAgent:
             True if configuration is valid, False otherwise
         """
         try:
-            if not settings.gemini_api_key:
-                logger.error("GEMINI_API_KEY is not configured")
+            if not settings.groq_api_key:
+                logger.error("GROQ_API_KEY is not configured")
                 return False
 
             if not self.model:
-                logger.error("GEMINI_MODEL is not configured")
+                logger.error("GROQ_MODEL is not configured")
                 return False
 
             return True
@@ -109,4 +109,4 @@ class GeminiAgent:
 
 
 # Singleton instance
-gemini_agent = GeminiAgent()
+groq_agent = GroqAgent()

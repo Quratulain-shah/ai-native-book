@@ -9,7 +9,7 @@ feature: fastapi-chat
 branch: 003-fastapi-chat
 user: Claude Code User
 command: /sp.tasks
-labels: ["tasks", "fastapi", "backend", "chat", "gemini"]
+labels: ["tasks", "fastapi", "backend", "chat", "groq"]
 links:
   spec: specs/003-fastapi-chat/spec.md
   ticket: null
@@ -39,7 +39,7 @@ Focus on the **Phase 2: Minimalistic FastAPI Backend**.
 
 **Key Tasks to Generate:**
 -   **Task 1:** Initialize Project (pyproject.toml, dependencies: `fastapi`, `uvicorn`, `openai-agents-sdk`, `pydantic`).
--   **Task 2:** Implement the `GeminiAgent` class (logic to connect OpenAI SDK to Gemini model).
+-   **Task 2:** Implement the `GroqAgent` class (logic to connect OpenAI SDK to Groq model).
 -   **Task 3:** Create the FastAPI `app` and `/chat` endpoint.
 -   **Task 4:** Write Integration Tests using `TestClient`.
 
@@ -47,7 +47,7 @@ Use the Context7 MCP server if you need to look up documentation for `openai-age
 
 ## Response snapshot
 
-Generated comprehensive task list for FastAPI Chat Backend with Gemini Integration at specs/003-fastapi-chat/tasks.md. The tasks are organized in phases following the user story priorities:
+Generated comprehensive task list for FastAPI Chat Backend with Groq Integration at specs/003-fastapi-chat/tasks.md. The tasks are organized in phases following the user story priorities:
 
 Phase 1: Setup - Project initialization and basic structure
 Phase 2: Foundational - Core infrastructure that blocks all user stories
@@ -56,7 +56,7 @@ Phase 4: User Story 2 (P2) - API authentication
 Phase 5: User Story 3 (P3) - Message format handling
 Phase 6: Polish - Cross-cutting concerns and validation
 
-The tasks follow proper dependencies with clear atomic units, TDD approach (tests written first), and parallel execution opportunities marked with [P]. Each task has specific file paths and clear acceptance criteria. The implementation follows the specification requirements including OpenAI SDK with Gemini integration.
+The tasks follow proper dependencies with clear atomic units, TDD approach (tests written first), and parallel execution opportunities marked with [P]. Each task has specific file paths and clear acceptance criteria. The implementation follows the specification requirements including OpenAI SDK with Groq integration.
 
 ## Outcome
 

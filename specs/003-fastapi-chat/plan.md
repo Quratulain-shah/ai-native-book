@@ -1,4 +1,4 @@
-# Implementation Plan: FastAPI Chat Backend with Gemini Integration
+# Implementation Plan: FastAPI Chat Backend with Groq Integration
 
 **Branch**: `003-fastapi-chat` | **Date**: 2025-12-17 | **Spec**: [specs/003-fastapi-chat/spec.md](specs/003-fastapi-chat/spec.md)
 **Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
@@ -7,7 +7,7 @@
 
 ## Summary
 
-Implement a FastAPI application with a single `/chat` endpoint that accepts user messages and returns AI-generated responses using the OpenAI Agents SDK configured to work with the Gemini 2.5 Flash model. The solution will use `uv` for dependency management and include comprehensive testing.
+Implement a FastAPI application with a single `/chat` endpoint that accepts user messages and returns AI-generated responses using the OpenAI Agents SDK configured to work with the Llama3-8b-8192 model. The solution will use `uv` for dependency management and include comprehensive testing.
 
 ## Technical Context
 
@@ -56,7 +56,7 @@ backend/
 │   │   ├── request.py       # Request models (MessageRequest)
 │   │   └── response.py      # Response models (MessageResponse)
 │   ├── services/
-│   │   ├── agent.py         # Agent logic with Gemini integration
+│   │   ├── agent.py         # Agent logic with Groq integration
 │   │   └── chat_service.py  # Chat service orchestrator
 │   └── api/
 │       └── routes/
@@ -83,9 +83,9 @@ backend/
 - Set up basic FastAPI application structure
 
 ### Phase 2: The Agent Logic
-- Configure OpenAIChatCompletionsModel to work with Gemini API
-- Implement agent service that uses gemini-2.5-flash model
-- Create proper authentication using GEMINI_API_KEY
+- Configure OpenAIChatCompletionsModel to work with Groq API
+- Implement agent service that uses llama3-8b-8192 model
+- Create proper authentication using GROQ_API_KEY
 - Implement error handling for API failures
 
 ### Phase 3: The API Layer
@@ -97,7 +97,7 @@ backend/
 ## Testing Strategy
 
 ### Unit Tests
-- Test agent logic in isolation with mocked Gemini API responses
+- Test agent logic in isolation with mocked Groq API responses
 - Validate data models and their validation rules
 - Test service layer business logic
 
@@ -109,13 +109,13 @@ backend/
 
 ## Architectural Decisions Required
 
-### ADR-001: OpenAI Agents SDK with Gemini Integration
-- **Context**: Need to use OpenAI Agents SDK but connect to Google's Gemini API instead of OpenAI endpoints
+### ADR-001: OpenAI Agents SDK with Groq Integration
+- **Context**: Need to use OpenAI Agents SDK but connect to Groq's API instead of OpenAI endpoints
 - **Options**:
   1. Configure OpenAIChatCompletionsModel with custom base URL
-  2. Use native Google AI SDK directly
+  2. Use native Groq SDK directly
   3. Create custom wrapper around httpx
-- **Decision**: Use OpenAIChatCompletionsModel with custom configuration to maintain SDK consistency while connecting to Gemini
+- **Decision**: Use OpenAIChatCompletionsModel with custom configuration to maintain SDK consistency while connecting to Groq
 - **Rationale**: Maintains familiar SDK interface while meeting requirement to use OpenAI-agents SDK
 
 ### ADR-002: Dependency Management
@@ -138,4 +138,4 @@ backend/
 
 | Violation | Why Needed | Simpler Alternative Rejected Because |
 |-----------|------------|-------------------------------------|
-| Custom API configuration | Requirement to use OpenAI SDK with Gemini API | Direct Gemini SDK would be simpler but violates spec requirement |
+| Custom API configuration | Requirement to use OpenAI SDK with Groq API | Direct Groq SDK would be simpler but violates spec requirement |

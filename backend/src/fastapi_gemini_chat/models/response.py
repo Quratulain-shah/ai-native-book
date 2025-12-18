@@ -41,7 +41,7 @@ class MessageResponse(BaseModel):
                 "response": "Hello! I'm doing well, thank you for asking.",
                 "conversation_id": "conv_123",
                 "timestamp": "2025-12-17T15:30:00.000Z",
-                "model_used": "gemini-2.5-flash",
+                "model_used": "llama3-8b-8192",
                 "tokens_used": 15
             }
         }

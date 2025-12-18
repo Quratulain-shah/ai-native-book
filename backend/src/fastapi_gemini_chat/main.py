@@ -18,11 +18,11 @@ async def lifespan(app: FastAPI):
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     )
     logger = logging.getLogger(__name__)
-    logger.info("Starting FastAPI application with Gemini integration...")
+    logger.info("Starting FastAPI application with Groq integration...")
 
     # Validate configuration
-    from .services.agent import gemini_agent
-    if not gemini_agent.validate_config():
+    from .services.agent import groq_agent
+    if not groq_agent.validate_config():
         logger.error("Configuration validation failed - shutting down")
         raise RuntimeError("Invalid configuration - check environment variables")
 
@@ -35,8 +35,8 @@ async def lifespan(app: FastAPI):
 def create_app() -> FastAPI:
     """Create and configure the FastAPI application."""
     app = FastAPI(
-        title="FastAPI Gemini Chat API",
-        description="A chat API powered by Google's Gemini model through OpenAI SDK",
+        title="FastAPI Groq Chat API",
+        description="A chat API powered by Groq's model through OpenAI SDK",
         version="0.1.0",
         lifespan=lifespan,
         debug=settings.api_debug
@@ -90,7 +90,7 @@ app = create_app()
 @app.get("/health")
 async def health_check():
     """Health check endpoint."""
-    return {"status": "healthy", "model": settings.gemini_model}
+    return {"status": "healthy", "model": settings.groq_model}
 
 
 # For running with uvicorn directly
