@@ -17,7 +17,11 @@ const ChatWindow = ({ messages, onSendMessage, isLoading, onClose }) => {
   return (
     <div className={styles.chatWindow}>
       <div className={styles.chatHeader}>
-        <h3>AI Assistant</h3>
+        <div className={styles.headerContent}>
+          <span className={styles.systemText}>SYSTEM DIAGNOSTIC</span>
+          <span className={styles.separator}>//</span>
+          <span className={`${styles.statusText} ${styles.online}`}>ONLINE</span>
+        </div>
         <button className={styles.closeButton} onClick={onClose} aria-label="Close chat">
           ×
         </button>

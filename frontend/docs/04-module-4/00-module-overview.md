@@ -20,6 +20,12 @@ By the end of this module, students will be able to:
 
 This module consists of 7 chapters that follow the Theory → Simulation → Real deployment flow:
 
+import KnowledgeMap from '@site/src/components/ui/KnowledgeMap';
+
+<div className="knowledge-map-section my-8">
+  <KnowledgeMap height="500px" />
+</div>
+
 1. **Vision-Language-Action Systems**: Theoretical foundations of multimodal AI integration
 2. **Whisper Audio Processing**: Voice command recognition and processing with ReSpeaker microphones
 3. **LLM Cognitive Planning**: Natural language to ROS 2 action sequence translation

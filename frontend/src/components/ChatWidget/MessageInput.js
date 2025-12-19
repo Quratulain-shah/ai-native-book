@@ -27,7 +27,7 @@ const MessageInput = ({ onSendMessage, isLoading }) => {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         onKeyPress={handleKeyPress}
-        placeholder="Type your message..."
+        placeholder="Enter command..."
         disabled={isLoading}
         rows="1"
         className={styles.textInput}

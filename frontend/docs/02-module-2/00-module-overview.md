@@ -40,6 +40,12 @@ By the end of this module, students will be able to:
 
 This module follows the Theory → Simulation → Real deployment approach:
 
+import KnowledgeMap from '@site/src/components/ui/KnowledgeMap';
+
+<div className="knowledge-map-section my-8">
+  <KnowledgeMap height="500px" />
+</div>
+
 ### Theory Component
 - Digital twin architecture and design principles
 - Physics simulation fundamentals and mathematical modeling

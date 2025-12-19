@@ -1,0 +1,160 @@
+/* System Status Footer Styles */
+.footer {
+  background: #0a0a0a !important;
+  border-top: 1px solid #00ffff !important;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.statusBar {
+  background: #0a0a0a !important;
+  border-top: 1px solid rgba(0, 255, 255, 0.3) !important;
+  padding: 0.5rem 1rem !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.8rem !important;
+  color: #e0e0e0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  min-height: 40px !important;
+  box-sizing: border-box !important;
+}
+
+.statusContainer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  gap: 1rem !important;
+  flex-wrap: wrap !important;
+}
+
+.statusIndicator {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  flex-shrink: 0 !important;
+}
+
+.led {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background-color: #ff0000 !important;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5) !important;
+  animation: pulse 1s infinite !important;
+}
+
+.ledGreen {
+  background-color: #00ff00 !important;
+  box-shadow: 0 0 5px rgba(0, 255, 0, 0.5) !important;
+}
+
+.ledRed {
+  background-color: #ff0000 !important;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5) !important;
+}
+
+.statusText {
+  color: #c0c0c0 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-weight: bold !important;
+}
+
+.statusOnline {
+  color: #00ff00 !important;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5) !important;
+}
+
+.statusOffline {
+  color: #ff0000 !important;
+  text-shadow: 0 0 5px rgba(255, 0, 0, 0.5) !important;
+}
+
+.versionIndicator {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  flex-shrink: 0 !important;
+}
+
+.versionText {
+  color: #00ffff !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-weight: bold !important;
+}
+
+.latencyIndicator {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  flex-shrink: 0 !important;
+}
+
+.latencyText {
+  color: #ffff00 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-weight: bold !important;
+}
+
+.copyright {
+  margin-left: auto !important;
+  text-align: right !important;
+  flex-shrink: 0 !important;
+}
+
+.copyrightText {
+  color: #808080 !important;
+  font-size: 0.7rem !important;
+}
+
+/* Pulse animation for LED */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .statusContainer {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.25rem !important;
+  }
+
+  .statusBar {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.25rem !important;
+    min-height: 60px !important;
+  }
+
+  .statusIndicator, .versionIndicator, .latencyIndicator {
+    font-size: 0.7rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .statusContainer {
+    align-items: flex-start !important;
+  }
+
+  .statusBar {
+    padding: 0.25rem 0.5rem !important;
+  }
+
+  .statusIndicator, .versionIndicator, .latencyIndicator, .copyrightText {
+    font-size: 0.65rem !important;
+  }
+}

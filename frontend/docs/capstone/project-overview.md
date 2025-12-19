@@ -27,6 +27,12 @@ This project requires students to integrate knowledge from all four course modul
 - **Module 3**: AI perception, navigation, and learning
 - **Module 4**: Vision-Language-Action systems and human interaction
 
+import KnowledgeMap from '@site/src/components/ui/KnowledgeMap';
+
+<div className="knowledge-map-section my-8">
+  <KnowledgeMap height="500px" />
+</div>
+
 ## Project Requirements
 
 ### Technical Requirements

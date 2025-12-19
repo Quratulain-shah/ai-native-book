@@ -8,8 +8,26 @@ const ChatWidget = () => {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  // Add welcome message when chat is first opened
+  const showWelcomeMessage = () => {
+    if (messages.length === 0) {
+      const welcomeMsg = {
+        id: 1,
+        text: "SYSTEM DIAGNOSTIC INITIATED. HELLO, I AM YOUR ROBOTICS ASSISTANT. HOW CAN I HELP YOU TODAY?",
+        sender: 'ai',
+        timestamp: new Date()
+      };
+      setMessages([welcomeMsg]);
+    }
+  };
+
   const toggleChat = () => {
-    setIsVisible(!isVisible);
+    const newState = !isVisible;
+    setIsVisible(newState);
+    // Show welcome message when opening the chat for the first time
+    if (newState && messages.length === 0) {
+      showWelcomeMessage();
+    }
   };
 
   const addMessage = (message) => {
@@ -73,7 +91,7 @@ const ChatWidget = () => {
 
   return (
     <div className={styles.chatWidget}>
-      <ChatButton isVisible={isVisible} onClick={toggleChat} />
+      <ChatButton isVisible={isVisible} onClick={toggleChat} isOpen={isVisible} />
       {isVisible && (
         <ChatWindow
           messages={messages}
