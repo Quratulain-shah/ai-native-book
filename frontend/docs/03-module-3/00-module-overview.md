@@ -20,6 +20,12 @@ By the end of this module, students will be able to:
 
 This module follows the **Theory → Sim → Real** pedagogical flow:
 
+import KnowledgeMap from '@site/src/components/ui/KnowledgeMap';
+
+<div className="knowledge-map-section my-8">
+  <KnowledgeMap height="500px" />
+</div>
+
 1. **Theory**: Foundational concepts of AI-powered robotics, Isaac ecosystem, and autonomous navigation
 2. **Sim**: Implementation and testing in NVIDIA Isaac Sim with synthetic data generation
 3. **Real**: Deployment on NVIDIA Jetson Orin Nano with Intel RealSense and Unitree robots

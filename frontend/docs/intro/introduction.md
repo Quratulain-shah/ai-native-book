@@ -83,6 +83,12 @@ The 13-week curriculum is organized into four progressive modules:
 
 Each module builds upon previous concepts while introducing new capabilities and challenges, culminating in a comprehensive capstone project that integrates all learned concepts.
 
+import KnowledgeMap from '@site/src/components/ui/KnowledgeMap';
+
+<div className="knowledge-map-section my-8">
+  <KnowledgeMap height="500px" />
+</div>
+
 ## Safety and Ethics
 
 Physical AI systems operate in shared spaces with humans and must be designed with safety and ethical considerations as primary requirements. This course emphasizes:

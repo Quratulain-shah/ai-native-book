@@ -1,80 +1,2486 @@
 /**
- * Any CSS included here will be global. The classic templ=========================
+ * Robotics-themed UI for Physical AI & Humanoid Robotics Textbook
+ * Implements dark, industrial, futuristic theme with glassmorphism and blueprint backgrounds
+ */
 
-/* You can override the default Infima variables here. */
-
+/* Robotics-themed color palette */
 :root {
-  --ifm-color-primary: #135731;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #00ffff; /* Neon cyan */
+  --ifm-color-primary-dark: #00cccc;
+  --ifm-color-primary-darker: #00bbbb;
+  --ifm-color-primary-darkest: #009999;
+  --ifm-color-primary-light: #33ffff;
+  --ifm-color-primary-lighter: #66ffff;
+  --ifm-color-primary-lightest: #99ffff;
+  --ifm-background-color: #1a1a1a; /* Deep charcoal */
+  --ifm-background-surface-color: #222222;
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', monospace;
+  --ifm-font-family-heading: 'Orbitron', sans-serif;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(0, 255, 255, 0.1);
+  --robotic-border-color: #00ffff;
+  --robotic-accent-color: #ff00ff;
+  --robotic-glow-color: rgba(0, 255, 255, 0.3);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Dark mode with night-vision theme */
 [data-theme='dark'] {
-  --ifm-color-primary: #a68215;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #00ffff;
+  --ifm-color-primary-dark: #00cccc;
+  --ifm-color-primary-darker: #00bbbb;
+  --ifm-color-primary-darkest: #009999;
+  --ifm-color-primary-light: #33ffff;
+  --ifm-color-primary-lighter: #66ffff;
+  --ifm-color-primary-lightest: #99ffff;
+  --ifm-background-color: #1a1a1a;
+  --ifm-background-surface-color: #222222;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 255, 255, 0.2);
 }
 
-/* Custom styles for Physical AI textbook */
+/* Blueprint grid background */
+html {
+  background-image:
+    linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Glassmorphism navbar */
+.navbar {
+  background: rgba(34, 34, 34, 0.8) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-glass {
+  background: rgba(34, 34, 34, 0.8) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.navbar__title {
+  font-family: 'Orbitron', sans-serif;
+  color: #00ffff !important;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.navbar__link {
+  color: #e0e0e0 !important;
+  transition: color 0.3s ease;
+}
+
+.navbar__link:hover {
+  color: #00ffff !important;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+}
+
+/* OS-style sidebar with file tree navigation */
+.sidebar-file-tree .menu,
+.menu {
+  background: rgba(34, 34, 34, 0.9) !important;
+  backdrop-filter: blur(5px);
+  border-right: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.sidebar-file-tree .menu__list,
+.menu__list {
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* File and folder icons for file tree */
+.sidebar-file-tree .menu__link::before,
+.menu__link::before {
+  content: "📄";
+  margin-right: 8px;
+  font-size: 0.8em;
+}
+
+.sidebar-file-tree .menu__list-item-collapsible::before,
+.menu__list-item-collapsible::before {
+  content: "📁";
+  margin-right: 8px;
+  font-size: 0.8em;
+}
+
+.sidebar-file-tree .menu__list-item--collapsed .menu__list-item-collapsible::before {
+  content: "📂";
+}
+
+.menu__link {
+  color: #e0e0e0 !important;
+  transition: all 0.3s ease;
+  border-left: 2px solid transparent;
+}
+
+.menu__link:hover {
+  color: #00ffff !important;
+  background: rgba(0, 255, 255, 0.1) !important;
+  border-left: 2px solid #00ffff;
+}
+
+.menu__link--active {
+  color: #00ffff !important;
+  background: rgba(0, 255, 255, 0.15) !important;
+  border-left: 2px solid #00ffff;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+/* File path breadcrumbs */
+.breadcrumb-file-path .breadcrumbs,
+.breadcrumbs {
+  font-family: 'JetBrains Mono', monospace !important;
+  background: rgba(34, 34, 34, 0.7) !important;
+  backdrop-filter: blur(5px);
+  border-radius: 4px;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.9rem !important;
+  position: relative !important;
+}
+
+/* Add file path prefix to make it look like a terminal path */
+.breadcrumb-file-path .breadcrumbs::before {
+  content: '~ $ ';
+  color: #00ff00 !important;
+  margin-right: 8px !important;
+  font-weight: bold !important;
+}
+
+/* Transform breadcrumbs to file path format */
+.breadcrumb-file-path .breadcrumbs__item:not(:last-child)::after {
+  content: ' / ' !important;
+  color: #00ffff !important;
+}
+
+.breadcrumb-file-path .breadcrumbs__item {
+  position: relative !important;
+}
+
+.breadcrumb-file-path .breadcrumbs__item--active .breadcrumbs__link {
+  color: #00ffff !important;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+/* Hide the default separators and customize the look */
+.breadcrumb-file-path .breadcrumbs__list {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.breadcrumb-file-path .breadcrumbs__item {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.breadcrumbs__item {
+  color: #c0c0c0 !important;
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: #00ffff !important;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+/* Terminal-style code blocks */
+.code-block {
+  background: rgba(10, 10, 10, 0.9) !important;
+  border: 1px solid rgba(0, 255, 255, 0.2) !important;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+  margin: 1rem 0 !important;
+  overflow-x: auto !important;
+  padding: 1rem !important;
+  position: relative !important;
+}
+
+/* HUD-style admonitions */
+.alert {
+  border-radius: 4px !important;
+  border-width: 2px !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.alert::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--robotic-border-color), transparent);
+}
+
+.alert--info {
+  background-color: rgba(0, 100, 200, 0.15) !important;
+  border-color: rgba(0, 191, 255, 0.5) !important;
+}
+
+.alert--tip {
+  background-color: rgba(0, 150, 0, 0.15) !important;
+  border-color: rgba(0, 255, 0, 0.5) !important;
+}
+
+.alert--caution {
+  background-color: rgba(200, 100, 0, 0.15) !important;
+  border-color: rgba(255, 150, 0, 0.5) !important;
+}
+
+.alert--danger {
+  background-color: rgba(200, 0, 0, 0.15) !important;
+  border-color: rgba(255, 50, 50, 0.5) !important;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #00ffff, #009999);
+  border-radius: 6px;
+  border: 2px solid #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #33ffff, #00ffff);
+}
+
+/* Custom theme overrides */
+.docusaurus-highlight-code-line {
+  background-color: rgba(0, 255, 255, 0.15);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+/* Footer with status bar styling */
+.footer {
+  background: rgba(10, 10, 10, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.footer__copyright {
+  color: #a0a0a0;
+  font-size: 0.8rem;
+}
+
+/* Custom styles for Physical AI textbook - preserved and enhanced */
 .physical-ai-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.2) 0%, rgba(0, 200, 200, 0.2) 100%);
+  color: #e0e0e0;
   padding: 2rem 0;
   text-align: center;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 8px;
+  background-clip: padding-box;
+  backdrop-filter: blur(10px);
 }
 
 .physical-ai-card {
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin: 1rem 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: rgba(34, 34, 34, 0.7) !important;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 1.5rem !important;
+  margin: 1rem 0 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.physical-ai-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
 }
 
 .physical-ai-theory {
-  border-left: 4px solid #2e8555;
-  background-color: #f8fff9;
+  border-left: 4px solid rgba(0, 255, 255, 0.6) !important;
+  background: rgba(0, 100, 150, 0.1) !important;
 }
 
 .physical-ai-simulation {
-  border-left: 4px solid #42a5f5;
-  background-color: #f0f8ff;
+  border-left: 4px solid rgba(0, 200, 255, 0.6) !important;
+  background: rgba(0, 80, 120, 0.1) !important;
 }
 
 .physical-ai-deployment {
-  border-left: 4px solid #ff9800;
-  background-color: #fff8f0;
+  border-left: 4px solid rgba(0, 150, 255, 0.6) !important;
+  background: rgba(0, 60, 100, 0.1) !important;
 }
 
 .hardware-specs {
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 1rem;
-  margin: 1rem 0;
-  font-family: 'Courier New', monospace;
+  background: rgba(40, 40, 40, 0.8) !important;
+  border: 1px solid rgba(0, 255, 255, 0.2) !important;
+  border-radius: 4px !important;
+  padding: 1rem !important;
+  margin: 1rem 0 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.9rem !important;
+  position: relative;
 }
 
-.code-block {
-  margin: 1rem 0;
+.hardware-specs::before {
+  content: 'HARDWARE SPECIFICATIONS';
+  position: absolute;
+  top: -0.7rem;
+  left: 1rem;
+  background: #1a1a1a;
+  padding: 0 0.5rem;
+  font-size: 0.7rem;
+  color: #00ffff;
+  text-transform: uppercase;
 }
 
 .exercise-box {
-  border: 2px dashed #9e9e9e;
-  border-radius: 8px;
-  padding: 1rem;
+  border: 2px dashed rgba(0, 255, 255, 0.4) !important;
+  border-radius: 8px !important;
+  padding: 1rem !important;
+  margin: 1rem 0 !important;
+  background: rgba(50, 50, 50, 0.3) !important;
+  position: relative;
+}
+
+.exercise-box::before {
+  content: 'EXERCISE';
+  position: absolute;
+  top: -0.7rem;
+  left: 1rem;
+  background: #1a1a1a;
+  padding: 0 0.5rem;
+  font-size: 0.8rem;
+  color: #ff9800;
+  text-transform: uppercase;
+}
+
+/* Typography enhancements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif !important;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+  color: #e0e0e0 !important;
+}
+
+h1 {
+  color: #00ffff !important;
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+/* Table styling */
+table {
+  background: rgba(34, 34, 34, 0.7) !important;
+  border: 1px solid rgba(0, 255, 255, 0.2) !important;
+  border-radius: 4px !important;
+}
+
+table th, table td {
+  border: 1px solid rgba(0, 255, 255, 0.1) !important;
+  padding: 0.5rem 1rem !important;
+}
+
+/* Interactive elements */
+button, .button {
+  background: linear-gradient(45deg, #00ffff, #009999) !important;
+  border: none !important;
+  border-radius: 4px !important;
+  color: #1a1a1a !important;
+  padding: 0.5rem 1rem !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  font-family: 'Orbitron', sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+button:hover, .button:hover {
+  background: linear-gradient(45deg, #33ffff, #00ffff) !important;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Search trigger button in navbar */
+.navbar-search-trigger, .navbar-search-standalone {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.navbar-search-standalone {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.search-trigger-btn {
+  background: rgba(0, 255, 255, 0.1) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  color: #00ffff !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 4px !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.8rem !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  outline: none !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-trigger-btn:hover {
+  background: rgba(0, 255, 255, 0.2) !important;
+  border-color: #00ffff !important;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3) !important;
+}
+
+/* Ensure proper navbar layout */
+.navbar {
+  position: relative;
+}
+
+/* Search bar in navbar - styling for docusaurus-search-local */
+.navbar__search {
+  display: flex !important;
+  align-items: center !important;
+  margin-left: 1rem !important;
+}
+
+.navbar__item {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.navbar-search-item {
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* DocSearch button styling - primary search button in navbar */
+.DocSearch-Button {
+  background: rgba(0, 255, 255, 0.1) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 4px !important;
+  color: #00ffff !important;
+  padding: 0.5rem 1rem !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.8rem !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  min-width: 120px !important;
+  justify-content: center !important;
+  height: 36px !important;
+  margin-left: 0.5rem !important;
+}
+
+.DocSearch-Button:hover {
+  background: rgba(0, 255, 255, 0.2) !important;
+  border-color: #00ffff !important;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3) !important;
+}
+
+.DocSearch-Button-Container {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.DocSearch-Search-Icon {
+  color: #00ffff !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Ensure search button is visible and functional */
+.navbar__items .navbar__item:last-child {
+  margin-left: 0.5rem !important;
+}
+
+/* Search input styling when expanded */
+.navbar__search input {
+  background: rgba(10, 10, 10, 0.8) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 4px !important;
+  color: #e0e0e0 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.9rem !important;
+  padding: 0.5rem 1rem !important;
+  outline: none !important;
+  transition: all 0.3s ease !important;
+  width: 200px !important;
+}
+
+.navbar__search input:focus {
+  border-color: #00ffff !important;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3) !important;
+  width: 250px !important;
+}
+
+/* Text highlighting styles */
+.highlight-yellow {
+  background-color: rgba(255, 215, 0, 0.3) !important;
+  border-radius: 2px;
+  padding: 0 2px;
+  margin: 0 1px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.6) !important;
+  box-shadow: 0 0 5px rgba(255, 215, 0, 0.3) !important;
+}
+
+.highlight-blue {
+  background-color: rgba(0, 191, 255, 0.3) !important;
+  border-radius: 2px;
+  padding: 0 2px;
+  margin: 0 1px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  border-bottom: 1px solid rgba(0, 191, 255, 0.6) !important;
+  box-shadow: 0 0 5px rgba(0, 191, 255, 0.3) !important;
+}
+
+.highlight-green {
+  background-color: rgba(50, 205, 50, 0.3) !important;
+  border-radius: 2px;
+  padding: 0 2px;
+  margin: 0 1px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  border-bottom: 1px solid rgba(50, 205, 50, 0.6) !important;
+  box-shadow: 0 0 5px rgba(50, 205, 50, 0.3) !important;
+}
+
+.highlight-pink {
+  background-color: rgba(255, 105, 180, 0.3) !important;
+  border-radius: 2px;
+  padding: 0 2px;
+  margin: 0 1px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  border-bottom: 1px solid rgba(255, 105, 180, 0.6) !important;
+  box-shadow: 0 0 5px rgba(255, 105, 180, 0.3) !important;
+}
+
+/* Text highlighter container */
+.text-highlighter-container {
+  position: absolute;
+  z-index: 10000;
+}
+
+.text-highlighter-pill {
+  background: rgba(34, 34, 34, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 8px !important;
+  padding: 8px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+.highlight-buttons {
+  display: flex !important;
+  gap: 4px !important;
+}
+
+.highlight-button {
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  font-weight: bold !important;
+}
+
+.highlight-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Ensure search appears in navbar */
+.navbar__items--right > .navbar__item[type="search"] {
+  display: block !important;
+}
+
+/* Center the search bar in the navbar */
+.navbar {
+  position: relative;
+}
+
+/* Move the search item to the center */
+.navbar__inner {
+  position: relative;
+}
+
+.navbar__items {
+  position: relative;
+}
+
+/* Style the search button with glassmorphism */
+.navbar__item[type="search"] {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 1000 !important;
+}
+
+/* Glassmorphism styling for the search button */
+.DocSearch-Button {
+  background: rgba(0, 255, 255, 0.1) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 4px !important;
+  color: #00ffff !important;
+  padding: 0.5rem 1rem !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.8rem !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  min-width: 120px !important;
+  justify-content: center !important;
+  height: 36px !important;
+  margin-left: 0 !important;
+}
+
+.DocSearch-Button:hover {
+  background: rgba(0, 255, 255, 0.2) !important;
+  border-color: #00ffff !important;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3) !important;
+}
+
+.DocSearch-Button-Container {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.DocSearch-Search-Icon {
+  color: #00ffff !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Glassmorphism styling for the search modal */
+.DocSearch-Modal {
+  background: rgba(34, 34, 34, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  overflow: hidden;
+}
+
+.DocSearch-SearchBar {
+  padding: 1rem !important;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2) !important;
+  background: rgba(20, 20, 20, 0.8) !important;
+}
+
+.DocSearch-Form {
+  background: rgba(10, 10, 10, 0.8) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 4px !important;
+}
+
+.DocSearch-Input {
+  color: #e0e0e0 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+.DocSearch-LoadingIndicator svg,
+.DocSearch-Search-Icon {
+  color: #00ffff !important;
+}
+
+/* Highlight search results with glassmorphism */
+.DocSearch-Hit-source {
+  background: rgba(34, 34, 34, 0.9) !important;
+  backdrop-filter: blur(5px) !important;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2) !important;
+  color: #00ffff !important;
+}
+
+.DocSearch-Hit {
+  background: rgba(40, 40, 40, 0.5) !important;
+  border: 1px solid rgba(0, 255, 255, 0.1) !important;
+  border-radius: 4px !important;
+  margin: 0.25rem 0 !important;
+}
+
+.DocSearch-Hit--deeper {
+  border-left: 2px solid rgba(0, 255, 255, 0.3) !important;
+}
+
+.DocSearch-Hit[aria-selected="true"] {
+  background: rgba(0, 255, 255, 0.2) !important;
+  border-color: #00ffff !important;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2) !important;
+}
+
+/* Search result title */
+.DocSearch-Hit-title {
+  color: #00ffff !important;
+  font-family: 'Orbitron', sans-serif !important;
+}
+
+/* Search result content preview */
+.DocSearch-Hit-content-wrapper {
+  color: #c0c0c0 !important;
+}
+
+/* Highlighted search terms */
+.DocSearch-Term,
+mark {
+  background: rgba(255, 255, 0, 0.3) !important;
+  border-radius: 2px;
+  padding: 0 2px;
+  margin: 0 1px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  border-bottom: 1px solid rgba(255, 255, 0, 0.6) !important;
+  box-shadow: 0 0 5px rgba(255, 255, 0, 0.3) !important;
+}
+
+/* Footer of search modal */
+.DocSearch-Footer {
+  background: rgba(20, 20, 20, 0.8) !important;
+  border-top: 1px solid rgba(0, 255, 255, 0.2) !important;
+  padding: 1rem !important;
+}
+
+/* Custom animations */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.scanline {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(0, 255, 255, 0.6);
+  animation: scanline 3s linear infinite;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+/* Glitch effect for headings */
+.glitch {
+  position: relative;
+  animation: glitch-anim 5s infinite;
+}
+
+@keyframes glitch-anim {
+  0% {
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+  25% {
+    text-shadow: -2px 0 5px rgba(255, 0, 255, 0.5), 2px 0 5px rgba(0, 255, 255, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+  75% {
+    text-shadow: 2px 0 5px rgba(255, 0, 255, 0.5), -2px 0 5px rgba(0, 255, 255, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+}
+
+/* Circuit board hover effects */
+.circuit-hover {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.circuit-hover:hover {
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  border: 1px solid rgba(0, 255, 255, 0.5);
+}
+
+.circuit-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(90deg, transparent 49%, rgba(0, 255, 255, 0.1) 50%, transparent 51%),
+    linear-gradient(transparent 49%, rgba(0, 255, 255, 0.1) 50%, transparent 51%);
+  background-size: 20px 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.circuit-hover:hover::before {
+  opacity: 1;
+}
+
+/* Search result highlighting styles */
+/* Highlighted search terms with yellow/cyan background */
+.mark, .docusaurus-highlighted-text, .search-result-highlight {
+  background-color: rgba(255, 255, 0, 0.3) !important; /* Yellow background */
+  border-radius: 2px;
+  padding: 0 2px;
+  margin: 0 1px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  border-bottom: 1px solid rgba(255, 255, 0, 0.5);
+  box-shadow: 0 0 5px rgba(255, 255, 0, 0.3);
+}
+
+/* Alternative cyan highlighting for different contexts */
+.mark-cyan, .docusaurus-highlighted-text-cyan, .search-result-highlight-cyan {
+  background-color: rgba(0, 255, 255, 0.2) !important; /* Cyan background */
+  border-radius: 2px;
+  padding: 0 2px;
+  margin: 0 1px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.5);
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+
+/* Search modal specific styles */
+.robotics-search-modal {
+  position: relative;
+}
+
+.robotics-search-modal-overlay {
+  z-index: 1000;
+}
+
+.robotics-search-trigger {
+  z-index: 999;
+}
+
+/* Custom search input styling */
+.search-modal-content {
+  background: rgba(34, 34, 34, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  overflow: hidden;
+}
+
+.search-modal-header {
+  padding: 1rem !important;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2) !important;
+  background: rgba(20, 20, 20, 0.8) !important;
+}
+
+.search-modal-body {
+  max-height: 60vh !important;
+  overflow-y: auto !important;
+  padding: 1rem !important;
+}
+
+.search-modal-footer {
+  padding: 1rem !important;
+  border-top: 1px solid rgba(0, 255, 255, 0.2) !important;
+  background: rgba(20, 20, 20, 0.8) !important;
+  font-size: 0.8rem !important;
+  color: #a0a0a0 !important;
+}
+
+.search-input-container {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.search-input {
+  width: 100% !important;
+  padding: 0.75rem 1rem !important;
+  background: rgba(10, 10, 10, 0.8) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 4px !important;
+  color: #e0e0e0 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 1rem !important;
+  outline: none !important;
+}
+
+.search-input:focus {
+  border-color: #00ffff !important;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3) !important;
+}
+
+.search-input-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: -1;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+}
+
+.search-filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.search-filter-btn {
+  padding: 0.25rem 0.75rem !important;
+  background: rgba(0, 255, 255, 0.1) !important;
+  border: 1px solid rgba(0, 255, 255, 0.2) !important;
+  border-radius: 4px !important;
+  color: #a0a0a0 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.75rem !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+}
+
+.search-filter-btn:hover {
+  background: rgba(0, 255, 255, 0.2) !important;
+  color: #00ffff !important;
+}
+
+.search-filter-btn--active {
+  background: rgba(0, 255, 255, 0.3) !important;
+  color: #00ffff !important;
+  border-color: #00ffff !important;
+}
+
+.search-results-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.search-result-item {
+  padding: 0.75rem !important;
+  margin: 0.25rem 0 !important;
+  border-radius: 4px !important;
+  background: rgba(40, 40, 40, 0.5) !important;
+  border: 1px solid rgba(0, 255, 255, 0.1) !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+.search-result-item:hover {
+  background: rgba(0, 255, 255, 0.1) !important;
+  border-color: rgba(0, 255, 255, 0.3) !important;
+  transform: translateX(2px) !important;
+}
+
+.search-result-item--selected {
+  background: rgba(0, 255, 255, 0.2) !important;
+  border-color: #00ffff !important;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2) !important;
+}
+
+.search-result-title {
+  font-weight: bold !important;
+  color: #00ffff !important;
+  margin-bottom: 0.25rem !important;
+  font-family: 'Orbitron', sans-serif !important;
+}
+
+.search-result-excerpt {
+  color: #c0c0c0 !important;
+  font-size: 0.9rem !important;
+  line-height: 1.4 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.search-result-url {
+  color: #808080 !important;
+  font-size: 0.8rem !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.search-result-module {
+  color: #00ffff !important;
+  font-size: 0.75rem !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  text-transform: uppercase !important;
+  display: inline-block !important;
+  padding: 0.125rem 0.5rem !important;
+  background: rgba(0, 255, 255, 0.1) !important;
+  border-radius: 2px !important;
+  margin-top: 0.25rem !important;
+}
+
+.search-loading {
+  text-align: center !important;
+  padding: 2rem !important;
+  color: #a0a0a0 !important;
+}
+
+.search-spinner {
+  width: 24px !important;
+  height: 24px !important;
+  border: 2px solid rgba(0, 255, 255, 0.3) !important;
+  border-top: 2px solid #00ffff !important;
+  border-radius: 50% !important;
+  animation: spin 1s linear infinite !important;
+  margin: 0 auto 1rem !important;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.search-no-results, .search-empty-state {
+  text-align: center !important;
+  padding: 2rem !important;
+  color: #a0a0a0 !important;
+}
+
+.search-no-results-icon, .search-empty-icon {
+  font-size: 2rem !important;
+  margin-bottom: 1rem !important;
+  display: block !important;
+}
+
+.search-no-results-text, .search-empty-text {
+  color: #e0e0e0 !important;
+  font-weight: bold !important;
+  margin-bottom: 0.5rem !important;
+  font-family: 'Orbitron', sans-serif !important;
+}
+
+.search-no-results-hint, .search-empty-hint {
+  color: #a0a0a0 !important;
+  font-size: 0.9rem !important;
+}
+
+.search-shortcuts {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.search-shortcut-item {
+  background: rgba(0, 255, 255, 0.1) !important;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 2px !important;
+  font-size: 0.75rem !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  color: #a0a0a0 !important;
+}
+/* ===========================================
+   PREMIUM ROBOTIC NAVBAR & FOOTER ENHANCEMENTS
+   =========================================== */
+
+/* Enhanced Premium Navbar */
+.navbar {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease !important;
+}
+
+/* Animated border scan effect */
+.navbar::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--robotic-border-color),
+    var(--robotic-accent-color),
+    var(--robotic-border-color),
+    transparent);
+  animation: border-scan 3s linear infinite;
+  z-index: 1000;
+}
+
+@keyframes border-scan {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Holographic logo effect */
+.navbar__logo img {
+  filter: drop-shadow(0 0 10px var(--robotic-glow-color));
+  transition: all 0.3s ease;
+  animation: logo-hologram 6s ease-in-out infinite;
+}
+
+@keyframes logo-hologram {
+  0%, 100% { 
+    filter: drop-shadow(0 0 10px var(--robotic-glow-color)) 
+            hue-rotate(0deg); 
+  }
+  50% { 
+    filter: drop-shadow(0 0 20px var(--robotic-glow-color)) 
+            hue-rotate(180deg); 
+  }
+}
+
+/* Enhanced navbar title */
+.navbar__title {
+  position: relative;
+  background: linear-gradient(45deg, 
+    #00ffff, 
+    #00cccc,
+    #00ffff);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: title-shimmer 3s ease infinite;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.3) !important;
+}
+
+@keyframes title-shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Enhanced navbar links with circuit board effect */
+.navbar__item {
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar__link {
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 4px;
+}
+
+.navbar__link:hover {
+  background: rgba(0, 255, 255, 0.15) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 
+    0 5px 15px rgba(0, 255, 255, 0.3),
+    inset 0 0 10px rgba(0, 255, 255, 0.1) !important;
+}
+
+/* Circuit board pattern on hover */
+.navbar__link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(0, 255, 255, 0.2),
+    transparent);
+  transition: left 0.5s ease;
+  z-index: 1;
+}
+
+.navbar__link:hover::before {
+  left: 100%;
+}
+
+/* Active link indicator */
+.navbar__link--active {
+  background: linear-gradient(45deg, 
+    rgba(0, 255, 255, 0.2),
+    rgba(255, 0, 255, 0.2)) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.3),
+    inset 0 0 20px rgba(0, 255, 255, 0.1) !important;
+  position: relative;
+}
+
+.navbar__link--active::after {
+  content: '⟳';
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8em;
+  animation: rotate 2s linear infinite;
+  color: var(--robotic-border-color);
+}
+
+@keyframes rotate {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+/* GitHub button enhancement */
+.navbar__item:last-child .navbar__link {
+  background: linear-gradient(45deg, 
+    var(--robotic-border-color),
+    var(--robotic-accent-color)) !important;
+  color: #1a1a1a !important;
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.navbar__item:last-child .navbar__link::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    var(--robotic-border-color),
+    var(--robotic-accent-color),
+    var(--robotic-border-color));
+  border-radius: 6px;
+  z-index: -1;
+  animation: rotate-border 3s linear infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes rotate-border {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.navbar__item:last-child .navbar__link:hover {
+  transform: translateY(-3px) scale(1.05) !important;
+  box-shadow: 
+    0 10px 25px rgba(0, 255, 255, 0.4),
+    0 0 30px rgba(255, 0, 255, 0.3) !important;
+}
+
+/* ===========================================
+   PREMIUM ROBOTIC FOOTER ENHANCEMENTS
+   =========================================== */
+
+.footer {
+  position: relative;
+  overflow: hidden;
+  padding-top: 3rem !important;
+}
+
+/* Animated top border */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--robotic-border-color),
+    var(--robotic-accent-color),
+    var(--robotic-border-color),
+    transparent);
+  animation: footer-scan 4s linear infinite;
+}
+
+@keyframes footer-scan {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Grid overlay effect */
+.footer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.3;
+  pointer-events: none;
+  animation: grid-drift 20s linear infinite;
+}
+
+@keyframes grid-drift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(30px, 30px); }
+}
+
+/* Footer logo enhancement */
+.footer__logo img {
+  filter: drop-shadow(0 0 15px var(--robotic-glow-color));
+  animation: footer-logo-float 8s ease-in-out infinite;
+}
+
+@keyframes footer-logo-float {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg);
+    filter: drop-shadow(0 0 15px var(--robotic-glow-color));
+  }
+  25% { 
+    transform: translateY(-10px) rotate(5deg);
+    filter: drop-shadow(0 0 20px var(--robotic-glow-color));
+  }
+  75% { 
+    transform: translateY(10px) rotate(-5deg);
+    filter: drop-shadow(0 0 20px var(--robotic-glow-color));
+  }
+}
+
+/* Footer titles with scanning underline */
+.footer__title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem !important;
+}
+
+.footer__title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    var(--robotic-border-color),
+    transparent);
+  animation: title-scan 2s ease-in-out infinite;
+}
+
+@keyframes title-scan {
+  0%, 100% { width: 60%; }
+  50% { width: 100%; }
+}
+
+/* Enhanced footer links with data stream effect */
+.footer__link-item {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.footer__link {
+  position: relative;
+  padding-left: 1.5rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.footer__link::before {
+  content: '▶';
+  position: absolute;
+  left: 0;
+  color: var(--robotic-border-color);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  font-size: 0.8em;
+}
+
+.footer__link:hover::before {
+  content: '⚡';
+  opacity: 1;
+  transform: scale(1.2);
+  animation: zap 0.5s ease;
+}
+
+@keyframes zap {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+  100% { transform: scale(1.2); }
+}
+
+.footer__link:hover {
+  color: var(--robotic-border-color) !important;
+  transform: translateX(5px);
+  text-shadow: 0 0 10px var(--robotic-glow-color) !important;
+}
+
+/* Social media icons with particle effect */
+.footer__col:last-child .footer__items {
+  position: relative;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
   margin: 1rem 0;
-  background-color: #fafafa;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 50%;
+  color: var(--robotic-border-color);
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, 
+    var(--robotic-glow-color) 0%, 
+    transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.social-icon:hover::before {
+  opacity: 1;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 
+    0 0 20px var(--robotic-glow-color),
+    0 0 30px rgba(0, 255, 255, 0.3);
+  color: #ffffff;
+  border-color: var(--robotic-border-color);
+}
+
+/* Status indicator in copyright */
+.footer__copyright {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-top: 2rem !important;
+  border-top: 1px solid rgba(0, 255, 255, 0.1) !important;
+  margin-top: 2rem !important;
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--robotic-border-color);
+  box-shadow: 0 0 10px var(--robotic-border-color);
+  animation: status-pulse 2s ease-in-out infinite;
+  position: relative;
+}
+
+.status-indicator::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  background: var(--robotic-border-color);
+  opacity: 0.3;
+  animation: status-pulse-outer 2s ease-in-out infinite;
+}
+
+@keyframes status-pulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes status-pulse-outer {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.5); }
+}
+
+/* Circuit board lines connecting footer columns */
+.footer__links {
+  position: relative;
+}
+
+.footer__links::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(0, 255, 255, 0.1),
+    rgba(0, 255, 255, 0.2),
+    rgba(0, 255, 255, 0.1),
+    transparent);
+  z-index: 1;
+  opacity: 0.3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 996px) {
+  .navbar::before {
+    animation-duration: 2s;
+  }
+  
+  .footer::before {
+    animation-duration: 3s;
+  }
+  
+  .footer__links::before {
+    display: none;
+  }
+  
+  .navbar__link {
+    padding: 0.5rem !important;
+  }
+}
+
+/* Mobile menu enhancements */
+.navbar-sidebar {
+  background: rgba(34, 34, 34, 0.98) !important;
+  backdrop-filter: blur(15px);
+  border-left: 2px solid var(--robotic-border-color);
+  box-shadow: -10px 0 30px rgba(0, 255, 255, 0.2);
+}
+
+.navbar-sidebar__brand .navbar__logo img {
+  animation: mobile-logo-pulse 2s ease-in-out infinite;
+}
+
+@keyframes mobile-logo-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Color mode toggle enhancement */
+.navbar__item--color-mode {
+  position: relative;
+}
+
+.navbar__item--color-mode::after {
+  content: '∞';
+  position: absolute;
+  top: 50%;
+  right: -15px;
+  transform: translateY(-50%);
+  color: var(--robotic-border-color);
+  font-size: 0.8em;
+  animation: infinity-spin 4s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes infinity-spin {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+/* Search button enhancement in navbar */
+.navbar__search {
+  position: relative;
+}
+
+.navbar__search .DocSearch-Button {
+  background: rgba(0, 255, 255, 0.15) !important;
+  border: 1px solid rgba(0, 255, 255, 0.4) !important;
+  box-shadow: 
+    0 0 15px rgba(0, 255, 255, 0.2),
+    inset 0 0 10px rgba(0, 255, 255, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.navbar__search .DocSearch-Button:hover {
+  background: rgba(0, 255, 255, 0.25) !important;
+  border-color: var(--robotic-border-color) !important;
+  box-shadow: 
+    0 0 25px rgba(0, 255, 255, 0.4),
+    inset 0 0 15px rgba(0, 255, 255, 0.2) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Floating particles effect (optional, add if you want more premium feel) */
+.floating-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.1;
+}
+
+.floating-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--robotic-border-color);
+  border-radius: 50%;
+  animation: float-particle 20s linear infinite;
+}
+
+@keyframes float-particle {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(100px);
+    opacity: 0;
+  }
+}
+
+/* High-tech hover sound effect (pseudo element animation) */
+.navbar__link, .footer__link, .social-icon {
+  position: relative;
+}
+
+.navbar__link:hover::after,
+.footer__link:hover::after,
+.social-icon:hover::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center,
+    var(--robotic-glow-color) 0%,
+    transparent 70%);
+  transform: translate(-50%, -50%);
+  animation: ripple 0.6s ease-out;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes ripple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.8;
+  }
+  100% {
+    width: 300%;
+    height: 300%;
+    opacity: 0;
+  }
+}
+
+/* Battery level indicator for footer (optional decorative element) */
+.battery-indicator {
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid var(--robotic-border-color);
+  border-radius: 3px;
+  position: relative;
+  margin-left: 10px;
+  overflow: hidden;
+}
+
+.battery-level {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  width: 80%;
+  background: linear-gradient(90deg, 
+    var(--robotic-border-color),
+    var(--robotic-accent-color));
+  border-radius: 1px;
+  animation: battery-drain 10s linear infinite;
+}
+
+.battery-indicator::after {
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: 6px;
+  width: 3px;
+  height: 8px;
+  background: var(--robotic-border-color);
+  border-radius: 0 1px 1px 0;
+}
+
+@keyframes battery-drain {
+  0%, 100% { width: 80%; }
+  50% { width: 30%; }
+}                  /* ===========================================
+   EXACT LAYOUT: [Logo][DOCS][BLOG] [CENTERED SEARCH] [GITHUB][☀/☾]
+   =========================================== */
+
+/* Navbar container */
+.navbar {
+  position: relative;
+}
+
+/* Navbar inner flex container */
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  min-height: 60px;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+/* LEFT SIDE: Logo, DOCS, BLOG */
+.navbar__items--left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* Logo and title */
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  margin-right: 0;
+}
+
+.navbar__logo {
+  margin-right: 0.5rem;
+}
+
+.navbar__title {
+  margin: 0;
+}
+
+/* Navigation links */
+.navbar__items--left .navbar__item {
+  margin: 0 !important;
+}
+
+.nav-link-robotic {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  color: #ffffff !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.5rem 0.75rem !important;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link-robotic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(0, 255, 255, 0.2), 
+    transparent);
+  transition: left 0.5s ease;
+}
+
+.nav-link-robotic:hover::before {
+  left: 100%;
+}
+
+.nav-link-robotic:hover {
+  color: var(--robotic-border-color) !important;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 5px 15px rgba(0, 255, 255, 0.3),
+    0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+/* CENTERED SEARCH BAR */
+/* The search plugin adds this wrapper */
+.navbar__item.navbar__search {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 300px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Search input */
+.navbar__search-input {
+  background: rgba(0, 255, 255, 0.1) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 20px !important;
+  color: #ffffff !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.9rem !important;
+  padding: 0.6rem 1rem 0.6rem 3rem !important;
+  width: 100% !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.navbar__search-input::placeholder {
+  color: rgba(0, 255, 255, 0.6) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  letter-spacing: 0.5px;
+  font-size: 0.85rem;
+}
+
+.navbar__search-input:hover {
+  background: rgba(0, 255, 255, 0.15) !important;
+  border-color: rgba(0, 255, 255, 0.5) !important;
+  box-shadow: 
+    0 6px 20px rgba(0, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.navbar__search-input:focus {
+  background: rgba(0, 255, 255, 0.2) !important;
+  border-color: var(--robotic-border-color) !important;
+  outline: none !important;
+  box-shadow: 
+    0 0 30px rgba(0, 255, 255, 0.3),
+    0 8px 25px rgba(0, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-1px);
+  width: 350px !important;
+}
+
+/* Search icon */
+.navbar__search-icon {
+  position: absolute !important;
+  left: 1rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  color: var(--robotic-border-color) !important;
+  z-index: 2;
+  width: 16px !important;
+  height: 16px !important;
+  transition: all 0.3s ease !important;
+}
+
+.navbar__search-input:focus + .navbar__search-icon {
+  color: #ffffff !important;
+  transform: translateY(-50%) scale(1.2) !important;
+  filter: drop-shadow(0 0 5px var(--robotic-border-color));
+}
+
+/* RIGHT SIDE: GitHub THEN Color Toggle */
+.navbar__items--right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* GitHub button - FIRST on right side */
+.github-link-robotic {
+  background: linear-gradient(45deg, 
+    rgba(0, 255, 255, 0.1),
+    rgba(255, 0, 255, 0.1)) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 4px !important;
+  color: var(--robotic-border-color) !important;
+  padding: 0.5rem 1rem !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  margin: 0 !important;
+}
+
+.github-link-robotic:hover {
+  background: linear-gradient(45deg, 
+    rgba(0, 255, 255, 0.2),
+    rgba(255, 0, 255, 0.2)) !important;
+  border-color: var(--robotic-border-color) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+/* Color mode toggle - SECOND on right side (right corner) */
+.navbar__item--color-mode {
+  margin: 0 !important;
+}
+
+.color-mode-toggle-robotic {
+  background: rgba(0, 255, 255, 0.1) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 4px !important;
+  color: var(--robotic-border-color) !important;
+  padding: 0.5rem !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  height: 36px !important;
+  margin: 0 !important;
+}
+
+.color-mode-toggle-robotic:hover {
+  background: rgba(0, 255, 255, 0.2) !important;
+  border-color: var(--robotic-border-color) !important;
+  transform: rotate(30deg);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+/* Search results dropdown */
+.navbar__search-results {
+  position: absolute !important;
+  top: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 400px !important;
+  background: rgba(10, 10, 15, 0.98) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 8px !important;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.5),
+    0 0 50px rgba(0, 255, 255, 0.2) !important;
+  margin-top: 0.5rem !important;
+  max-height: 400px !important;
+  overflow-y: auto !important;
+  z-index: 1000 !important;
+  animation: search-dropdown-appear 0.3s ease-out !important;
+}
+
+@keyframes search-dropdown-appear {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 996px) {
+  /* Stack vertically on mobile */
+  .navbar__inner {
+    flex-direction: column;
+    padding: 0.75rem;
+    gap: 0.75rem;
+  }
+  
+  .navbar__items--left {
+    width: 100%;
+    justify-content: center;
+    order: 1;
+  }
+  
+  .navbar__item.navbar__search {
+    position: static !important;
+    width: 100% !important;
+    transform: none !important;
+    left: auto !important;
+    top: auto !important;
+    order: 2;
+  }
+  
+  .navbar__items--right {
+    width: 100%;
+    justify-content: center;
+    order: 3;
+  }
+  
+  .navbar__search-input:focus {
+    width: 100% !important;
+  }
+  
+  .navbar__search-results {
+    left: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+  }
+}
+
+/* Tablet responsive */
+@media (min-width: 997px) and (max-width: 1200px) {
+  .navbar__item.navbar__search {
+    width: 250px !important;
+  }
+  
+  .navbar__search-input:focus {
+    width: 300px !important;
+  }
+  
+  .navbar__search-results {
+    width: 350px !important;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1440px) {
+  .navbar__item.navbar__search {
+    width: 400px !important;
+  }
+  
+  .navbar__search-input:focus {
+    width: 450px !important;
+  }
+  
+  .navbar__search-results {
+    width: 500px !important;
+  }
+}
+
+/* If using DocSearch (Algolia) */
+.DocSearch-Button {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 300px !important;
+  border-radius: 20px !important;
+  padding: 0.6rem 1rem !important;
+  background: rgba(0, 255, 255, 0.1) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  color: var(--robotic-border-color) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.9rem !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.DocSearch-Button:hover {
+  background: rgba(0, 255, 255, 0.15) !important;
+  border-color: rgba(0, 255, 255, 0.5) !important;
+  transform: translate(-50%, calc(-50% - 1px)) !important;
+  box-shadow: 0 6px 20px rgba(0, 255, 255, 0.2);
+}
+
+.DocSearch-Button-Placeholder {
+  color: rgba(0, 255, 255, 0.8) !important;
+}
+
+.DocSearch-Button:hover .DocSearch-Button-Placeholder {
+  color: #ffffff !important;
+}
+
+/* Ensure navbar items don't wrap */
+.navbar__items {
+  flex-wrap: nowrap;
+}
+
+/* Add spacing between left items */
+.navbar__items--left > *:not(:last-child) {
+  margin-right: 1rem;
+}
+
+/* Add glowing effect to active nav links */
+.navbar__link--active {
+  background: rgba(0, 255, 255, 0.15) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  box-shadow: 
+    0 0 15px rgba(0, 255, 255, 0.2),
+    inset 0 0 10px rgba(0, 255, 255, 0.1) !important;
+}/* ===========================================
+   CENTERED SEARCH BAR WITH RIGHT-ALIGNED CONTROLS
+   =========================================== */
+
+/* Make navbar a flex container */
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  min-height: 60px;
+}
+
+/* Left items container */
+.navbar__items--left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+/* Logo and title */
+.navbar__brand {
+  margin-right: 2rem;
+}
+
+/* Center the search bar horizontally */
+.navbar__search {
+  position: absolute !important;
+  left: 10% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 300px !important;
+  z-index: 1000 !important;
+  margin: 0 !important;
+  
+}
+
+/* Right items container - GitHub and color mode toggle */
+.navbar__items--right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+  
+  
+}
+
+/* Color mode toggle button styling */
+.navbar__item--color-mode {
+  order: 2;
+  margin-left: 0.1rem !important;
+}
+
+.color-mode-toggle-robotic {
+  background: rgba(0, 255, 255, 0.1) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 4px !important;
+  color: var(--robotic-border-color) !important;
+  padding: 0.5rem !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  height: 36px !important;
+}
+
+.color-mode-toggle-robotic:hover {
+  background: rgba(0, 255, 255, 0.2) !important;
+  border-color: var(--robotic-border-color) !important;
+  transform: rotate(30deg);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+/* GitHub button styling */
+.github-link-robotic {
+  order: 1;
+  background: linear-gradient(45deg, 
+    rgba(0, 255, 255, 0.1),
+    rgba(255, 0, 255, 0.1)) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 4px !important;
+  color: var(--robotic-border-color) !important;
+  padding: 0.5rem 1rem !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+.github-link-robotic:hover {
+  background: linear-gradient(45deg, 
+    rgba(0, 255, 255, 0.2),
+    rgba(255, 0, 255, 0.2)) !important;
+  border-color: var(--robotic-border-color) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+/* Centered search bar styling */
+.navbar__search-input {
+  background: rgba(0, 255, 255, 0.1) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 20px !important;
+  color: #ffffff !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.9rem !important;
+  padding: 0.6rem 1rem 0.6rem 3rem !important;
+  width: 100% !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.navbar__search-input::placeholder {
+  color: rgba(0, 255, 255, 0.6) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  letter-spacing: 0.5px;
+  font-size: 0.85rem;
+}
+
+.navbar__search-input:hover {
+  background: rgba(0, 255, 255, 0.15) !important;
+  border-color: rgba(0, 255, 255, 0.5) !important;
+  box-shadow: 
+    0 6px 20px rgba(0, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.navbar__search-input:focus {
+  background: rgba(0, 255, 255, 0.2) !important;
+  border-color: var(--robotic-border-color) !important;
+  outline: none !important;
+  box-shadow: 
+    0 0 30px rgba(0, 255, 255, 0.3),
+    0 8px 25px rgba(0, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-1px);
+  width: 350px !important;
+}
+
+/* Search icon */
+.navbar__search-icon {
+  position: absolute !important;
+  left: 1rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  color: var(--robotic-border-color) !important;
+  z-index: 2;
+  width: 16px !important;
+  height: 16px !important;
+  transition: all 0.3s ease !important;
+}
+
+.navbar__search-input:focus + .navbar__search-icon {
+  color: #ffffff !important;
+  transform: translateY(-50%) scale(1.2) !important;
+  filter: drop-shadow(0 0 5px var(--robotic-border-color));
+}
+
+/* Search results dropdown */
+.navbar__search-results {
+  position: absolute !important;
+  top: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 400px !important;
+  background: rgba(10, 10, 15, 0.98) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 8px !important;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.5),
+    0 0 50px rgba(0, 255, 255, 0.2) !important;
+  margin-top: 0.5rem !important;
+  max-height: 400px !important;
+  overflow-y: auto !important;
+  z-index: 1000 !important;
+  animation: search-dropdown-appear 0.3s ease-out !important;
+}
+
+@keyframes search-dropdown-appear {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Scanline animation */
+.navbar__search-results::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--robotic-border-color),
+    var(--robotic-accent-color),
+    transparent);
+  animation: dropdown-scanline 2s linear infinite;
+  z-index: 1001;
+}
+
+@keyframes dropdown-scanline {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Mobile responsive */
+@media (max-width: 996px) {
+  /* On mobile, reposition everything */
+  .navbar__inner {
+    flex-wrap: wrap;
+    padding: 0.5rem 0;
+  }
+  
+  .navbar__items--left {
+    order: 1;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .navbar__search {
+    position: static !important;
+    order: 2;
+    transform: none !important;
+    width: 100% !important;
+    margin: 0.5rem 0 !important;
+    left: auto !important;
+    top: auto !important;
+  }
+  
+  .navbar__items--right {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  
+  .navbar__search-input:focus {
+    width: 100% !important;
+  }
+  
+  .navbar__search-results {
+    left: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+  }
+  
+  .navbar__brand {
+    margin-right: 1rem;
+  }
+}
+
+/* Tablet responsive */
+@media (min-width: 997px) and (max-width: 1200px) {
+  .navbar__search {
+    width: 250px !important;
+  }
+  
+  .navbar__search-input:focus {
+    width: 300px !important;
+  }
+  
+  .navbar__search-results {
+    width: 350px !important;
+  }
+}
+
+/* For very large screens */
+@media (min-width: 1440px) {
+  .navbar__search {
+    width: 400px !important;
+  }
+  
+  .navbar__search-input:focus {
+    width: 450px !important;
+  }
+  
+  .navbar__search-results {
+    width: 500px !important;
+  }
+}
+
+/* Adjust left items spacing */
+.navbar__items--left .navbar__item {
+  margin-right: 1rem;
+}
+
+/* Ensure color mode toggle has proper spacing */
+.navbar__item--color-mode {
+  margin-left: 0 !important;
+}
+
+/* If using DocSearch (Algolia) */
+.DocSearch-Button {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 300px !important;
+  border-radius: 20px !important;
+  padding: 0.6rem 1rem !important;
+  justify-content: flex-start !important;
+  background: rgba(0, 255, 255, 0.1) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  color: var(--robotic-border-color) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.9rem !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.DocSearch-Button:hover {
+  background: rgba(0, 255, 255, 0.15) !important;
+  border-color: rgba(0, 255, 255, 0.5) !important;
+  transform: translate(-50%, calc(-50% - 1px)) !important;
+  box-shadow: 
+    0 6px 20px rgba(0, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.DocSearch-Button-Placeholder {
+  color: rgba(0, 255, 255, 0.8) !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+}
+
+.DocSearch-Button:hover .DocSearch-Button-Placeholder {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px var(--robotic-glow-color);
+}
+
+.DocSearch-Search-Icon {
+  color: var(--robotic-border-color) !important;
+  transition: all 0.3s ease !important;
+  margin-right: 0.5rem;
+}
+
+.DocSearch-Button:hover .DocSearch-Search-Icon {
+  transform: scale(1.2) rotate(15deg);
+  filter: drop-shadow(0 0 5px var(--robotic-border-color));
 }

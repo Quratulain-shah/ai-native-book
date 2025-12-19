@@ -126,6 +126,12 @@ This comprehensive 13-week course provides university-level instruction in Physi
 - Final presentations and demonstrations
 - **Learning Objectives**: Integrate all course concepts, deploy on real hardware, demonstrate autonomous behavior
 
+import KnowledgeMap from '@site/src/components/ui/KnowledgeMap';
+
+<div className="knowledge-map-section my-8">
+  <KnowledgeMap height="500px" />
+</div>
+
 ## Assessment Structure
 
 ### Weekly Assignments (40%)

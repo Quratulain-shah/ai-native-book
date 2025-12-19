@@ -1,0 +1,221 @@
+/**
+ * Custom Industrial Scrollbars for Physical AI & Humanoid Robotics Textbook
+ * Implements high-contrast, thin rectangular scrollbars with charcoal track and cyan thumb
+ */
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px; /* Thin industrial-style width */
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212; /* Charcoal track */
+  border-radius: 4px;
+  border: 1px solid rgba(0, 255, 255, 0.2); /* Cyan border */
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #00aaff, #00ffff); /* Cyan gradient */
+  border: 1px solid #00ffff; /* Cyan border */
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #00ffff, #66ffff); /* Brighter cyan on hover */
+  border-color: #66ffff;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(45deg, #66ffff, #00ffff); /* Active state */
+  border-color: #00ffff;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+}
+
+/* Corner where horizontal and vertical scrollbars meet */
+::-webkit-scrollbar-corner {
+  background: #121212;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+/* Firefox scrollbar styling */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #00ffff #121212; /* thumb color track color */
+}
+
+/* Custom scrollbar for specific containers */
+.scroll-container {
+  scrollbar-width: thin;
+  scrollbar-color: #00ffff #121212;
+}
+
+.scroll-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #121212;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #00ffff;
+  border: 1px solid #00ffff;
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #66ffff;
+}
+
+/* Enhanced scrollbar for code blocks */
+.code-scroll-container {
+  scrollbar-width: thin;
+  scrollbar-color: #00aaff #0a0a0a;
+}
+
+.code-scroll-container::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.code-scroll-container::-webkit-scrollbar-track {
+  background: #0a0a0a;
+  border-radius: 3px;
+}
+
+.code-scroll-container::-webkit-scrollbar-thumb {
+  background: #00aaff;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 170, 255, 0.5);
+}
+
+.code-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #00ffff;
+  box-shadow: 0 0 6px rgba(0, 255, 255, 0.3);
+}
+
+/* Sidebar scrollbar styling */
+.sidebar-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #00cc99 #1a1a1a;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 3px;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-thumb {
+  background: #00cc99;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 204, 153, 0.5);
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #00ffcc;
+  box-shadow: 0 0 6px rgba(0, 255, 204, 0.3);
+}
+
+/* Terminal scrollbar styling */
+.terminal-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #00aaff #0a0a0a;
+}
+
+.terminal-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.terminal-scrollbar::-webkit-scrollbar-track {
+  background: #0a0a0a;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 170, 255, 0.2);
+}
+
+.terminal-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #00aaff, #00ffff);
+  border: 1px solid #00ffff;
+  border-radius: 3px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+.terminal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #00ffff, #66ffff);
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+}
+
+/* Cyberpunk-inspired scrollbar effects */
+@keyframes scrollbarGlow {
+  0% {
+    box-shadow: 0 0 4px rgba(0, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 4px rgba(0, 255, 255, 0.2);
+  }
+}
+
+.cyber-scrollbar::-webkit-scrollbar-thumb {
+  animation: scrollbarGlow 3s ease-in-out infinite;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #000;
+    border: 2px solid #fff;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #fff;
+    border: 2px solid #000;
+  }
+
+  html {
+    scrollbar-color: #fff #000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  ::-webkit-scrollbar-thumb {
+    transition: none;
+  }
+
+  .cyber-scrollbar::-webkit-scrollbar-thumb {
+    animation: none;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .code-scroll-container::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+}

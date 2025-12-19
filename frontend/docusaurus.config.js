@@ -43,9 +43,45 @@ const config = {
         },
         blog: false, // Disable blog functionality
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: [
+            require.resolve('./src/css/custom.css'),
+            require.resolve('./src/css/theme.css'),
+            require.resolve('./src/css/custom-scrollbars.css'),
+          ],
+        },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
         },
       }),
+    ],
+  ],
+
+  stylesheets: [
+    'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap',
+  ],
+
+  plugins: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        highlightSearchTermsOnTargetPage: true,
+        docsRouteBasePath: '/docs',
+        blogRouteBasePath: '/blog',
+        searchResultLimits: 8,
+        searchResultContextMaxLength: 50,
+        searchBarShortcut: true, // Enable default search bar shortcut (Cmd+K/Ctrl+K)
+        language: ['en', 'ur'],
+        maxSearchResults: 20,
+        explicitSearchResultPath: true,
+        indexBlog: true,
+        indexPages: true,
+        indexDocs: true, // Make sure docs are indexed
+        indexPages: true, // Make sure static pages are indexed
+        searchContextByPaths: true,
+        filterOptions: {},
+      },
     ],
   ],
 
@@ -66,6 +102,10 @@ const config = {
             sidebarId: 'tutorialSidebar',
             position: 'left',
             label: 'Textbook',
+          },
+          {
+            type: 'search',
+            position: 'right',
           },
           {
             href: 'https://github.com/your-organization/ai-native-book',
@@ -116,7 +156,7 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Textbook. Built with Docusaurus.`,
       },
       prism: {
-        theme: require('prism-react-renderer/themes/github'),
+        theme: require('prism-react-renderer/themes/dracula'), // Using dracula theme for dark mode consistency
         darkTheme: require('prism-react-renderer/themes/dracula'),
       },
     }),

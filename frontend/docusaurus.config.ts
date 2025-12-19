@@ -1,150 +1,246 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
-
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+import { themes as prismThemes } from "prism-react-renderer";
+import type { Config } from "@docusaurus/types";
+import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  title: "Tech Nexus",
+  tagline: "Where Innovation Meets Automation",
+  favicon: "img/robot-favicon.svg",
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    v4: true,
   },
 
-  // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  url: "https://your-docusaurus-site.example.com",
+  baseUrl: "/",
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: "facebook",
+  projectName: "docusaurus",
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: "throw",
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: "en",
+    locales: ["en"],
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       {
         docs: {
-          sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
+          sidebarPath: "./sidebars.ts",
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
         },
         blog: {
           showReadingTime: true,
           feedOptions: {
-            type: ['rss', 'atom'],
+            type: ["rss", "atom"],
             xslt: true,
           },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
+            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          onInlineTags: "warn",
+          onInlineAuthors: "warn",
+          onUntruncatedBlogPosts: "warn",
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: "./src/css/custom.css",
         },
       } satisfies Preset.Options,
     ],
   ],
 
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        language: ["en"],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+        indexBlog: true,
+        indexPages: true,
+      },
+    ],
+  ],
+
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: "img/robotic-social-card.jpg",
     colorMode: {
+      defaultMode: "dark",
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'My Site',
+      title: "ROBOTIC NEXUS",
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: "Robotic Nexus Logo",
+        src: "img/robot-logo.svg",
+        className: "navbar-logo-robotic",
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Tutorial',
+          type: "docSidebar",
+          sidebarId: "tutorialSidebar",
+          position: "left",
+          label: "DOCS",
+          className: "nav-link-robotic",
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
-          position: 'right',
+          to: "/blog",
+          label: "BLOG",
+          position: "left",
+          className: "nav-link-robotic",
+        },
+        // GitHub link will be on the right
+        {
+          href: "https://github.com/facebook/docusaurus",
+          label: "GITHUB",
+          position: "right",
+          className: "github-link-robotic",
         },
       ],
+      style: "dark",
+      hideOnScroll: false,
     },
     footer: {
-      style: 'dark',
+      style: "dark",
+      logo: {
+        alt: "Robotic Nexus Footer Logo",
+        src: "img/robot-logo-glow.svg",
+        width: 80,
+        height: 80,
+        className: "footer-logo-robotic",
+      },
       links: [
         {
-          title: 'Docs',
+          title: "TECHNOLOGY",
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: "AI Modules",
+              to: "/docs/ai-modules",
+              className: "footer-link-robotic",
+            },
+            {
+              label: "API Documentation",
+              to: "/docs/api",
+              className: "footer-link-robotic",
+            },
+            {
+              label: "Hardware Specs",
+              to: "/docs/hardware",
+              className: "footer-link-robotic",
+            },
+            {
+              label: "Integration Guide",
+              to: "/docs/integration",
+              className: "footer-link-robotic",
             },
           ],
         },
         {
-          title: 'Community',
+          title: "RESOURCES",
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: "Tutorials",
+              to: "/tutorials",
+              className: "footer-link-robotic",
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: "Showcase",
+              to: "/showcase",
+              className: "footer-link-robotic",
             },
             {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
+              label: "Research Papers",
+              to: "/research",
+              className: "footer-link-robotic",
+            },
+            {
+              label: "Documentation",
+              to: "/docs",
+              className: "footer-link-robotic",
             },
           ],
         },
         {
-          title: 'More',
+          title: "COMMUNITY",
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
+              label: "Discord Hub",
+              href: "https://discord.gg/robotics",
+              className: "footer-link-robotic",
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: "Developer Forum",
+              href: "https://forum.robotic-nexus.com",
+              className: "footer-link-robotic",
+            },
+            {
+              label: "GitHub",
+              href: "https://github.com/facebook/docusaurus",
+              className: "footer-link-robotic",
+            },
+            {
+              label: "Hackathons",
+              to: "/hackathons",
+              className: "footer-link-robotic",
+            },
+          ],
+        },
+        {
+          title: "ENTERPRISE",
+          items: [
+            {
+              label: "Solutions",
+              to: "/solutions",
+              className: "footer-link-robotic",
+            },
+            {
+              label: "Careers",
+              to: "/careers",
+              className: "footer-link-robotic",
+            },
+            {
+              label: "Support",
+              to: "/support",
+              className: "footer-ai-link",
+            },
+            {
+              label: "Contact",
+              to: "/contact",
+              className: "footer-link-robotic",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `
+        <div class="footer-copyright-container">
+          <span>© ${new Date().getFullYear()} Robotic Nexus.</span>
+          <span class="system-status">
+            <span class="status-indicator active"></span>
+            <span class="status-text">All systems operational</span>
+          </span>
+        </div>
+      `,
     },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      theme: prismThemes.vsDark,
+      darkTheme: prismThemes.nightOwl,
     },
   } satisfies Preset.ThemeConfig,
+
+  stylesheets: [
+    {
+      href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+      type: "text/css",
+    },
+    {
+      href: "https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap",
+      type: "text/css",
+    },
+  ],
 };
 
 export default config;
