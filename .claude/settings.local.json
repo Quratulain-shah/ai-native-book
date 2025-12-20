@@ -174,20 +174,7 @@
       "Bash(python -c \"from qdrant_client import AsyncQdrantClient; client = AsyncQdrantClient\\('':memory:''\\); import inspect; print\\([m for m in dir\\(client\\) if ''search'' in m.lower\\(\\)]\\)\")",
       "Bash(python -c \"from qdrant_client import AsyncQdrantClient; client = AsyncQdrantClient\\('':memory:''\\); help\\(client.query_points\\)\")",
       "Bash(timeout 10s python -m src.fastapi_gemini_chat.rag.ingest_content)",
-      "Bash(curl -X POST \"http://127.0.0.1:8000/api/v1/chat\" -H \"Content-Type: application/json\" -d \"{\"\"message\"\": \"\"What book content do you have access to?\"\", \"\"conversation_id\"\": \"\"test_conversation3\"\"}\")",
-      "Bash(git checkout -b 001-urdu-multilingual-support)",
-      "Bash(mkdir -p:*)",
-      "Bash(.specify/scripts/powershell/setup-plan.ps1 -Json)",
-      "Bash(npx docusaurus clear)",
-      "Bash(npx docusaurus start --port 3004)",
-      "Bash(npx docusaurus start --port 3005)",
-      "Bash(dir frontendi18n /A:D)",
-      "Bash(dir \"C:\\\\Users\\\\LENOVO X1 YOGA\\\\Desktop\\\\ai-native-book\\\\frontend\\\\i18n\" /AD)",
-      "Bash(timeout 60 npm run build)",
-      "Bash(del \"C:\\\\Users\\\\LENOVO X1 YOGA\\\\Desktop\\\\ai-native-book\\\\frontend\\\\docs\\\\99-test-content-enhancement.md\")",
-      "Bash(dir \"C:\\\\Users\\\\LENOVO X1 YOGA\\\\Desktop\\\\ai-native-book\\\\frontend\\\\docs\" /s)",
-      "Bash(findstr \"01- 02- 03- 04- 98- 99-\")",
-      "Bash(npx docusaurus serve --no-open)"
+      "Bash(curl -X POST \"http://127.0.0.1:8000/api/v1/chat\" -H \"Content-Type: application/json\" -d \"{\"\"message\"\": \"\"What book content do you have access to?\"\", \"\"conversation_id\"\": \"\"test_conversation3\"\"}\")"
     ]
   }
 }
