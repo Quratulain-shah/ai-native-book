@@ -27,6 +27,16 @@ const config = {
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'ur'], // Adding Urdu for multilingual support
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+      },
+      ur: {
+        label: 'اردو',
+        direction: 'rtl', // Right-to-left support for Urdu
+      },
+    },
   },
 
   presets: [
@@ -104,12 +114,12 @@ const config = {
             label: 'Textbook',
           },
           {
-            type: 'search',
+            href: 'https://github.com/your-organization/ai-native-book',
+            label: 'GitHub',
             position: 'right',
           },
           {
-            href: 'https://github.com/your-organization/ai-native-book',
-            label: 'GitHub',
+            type: 'localeDropdown',
             position: 'right',
           },
         ],

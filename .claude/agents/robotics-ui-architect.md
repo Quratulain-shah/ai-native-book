@@ -1,5 +1,8 @@
 ---
-name: robotics-ui-architect
+name: 
+
+
+
 description: "A Senior UX/UI specialist focused on transforming the textbook into a commercial-grade, glassmorphic, and highly interactive learning platform."
 tools: [read_file, write_file, list_files, run_command]
 model: inherit
