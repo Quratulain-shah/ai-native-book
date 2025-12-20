@@ -1,0 +1,18 @@
+{
+  "title": {
+    "message": "کتاب فزیکل ای آئی",
+    "description": "The title in the navbar"
+  },
+  "item.label.Textbook": {
+    "message": "کتاب درسی",
+    "description": "Navbar item with label Textbook"
+  },
+  "item.label.GitHub": {
+    "message": "گِٹ ہب",
+    "description": "Navbar item with label GitHub"
+  },
+  "searchBar.label": {
+    "message": "تلاش کریں",
+    "description": "The search bar label"
+  }
+}

@@ -2484,3 +2484,56 @@ mark {
   transform: scale(1.2) rotate(15deg);
   filter: drop-shadow(0 0 5px var(--robotic-border-color));
 }
+
+/* RTL support for Urdu */
+html[dir="rtl"] {
+  text-align: right;
+  direction: rtl;
+}
+
+html[dir="rtl"] .navbar {
+  text-align: right;
+}
+
+html[dir="rtl"] .menu__list {
+  text-align: right;
+}
+
+html[dir="rtl"] .navbar__title {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+html[dir="rtl"] .navbar__items--right {
+  order: -1; /* Move right items to the left in RTL */
+}
+
+html[dir="rtl"] .navbar__items--left {
+  order: 1; /* Move left items to the right in RTL */
+}
+
+html[dir="rtl"] .footer__title {
+  text-align: right;
+}
+
+html[dir="rtl"] .footer__items {
+  text-align: right;
+}
+
+html[dir="rtl"] .pagination-nav__label {
+  text-align: right;
+}
+
+html[dir="rtl"] .theme-doc-sidebar-menu .menu__list-item .menu__link {
+  text-align: right;
+}
+
+html[dir="rtl"] .search-bar {
+  text-align: right;
+}
+
+html[dir="rtl"] .search-result-title,
+html[dir="rtl"] .search-result-excerpt,
+html[dir="rtl"] .search-result-url {
+  text-align: right;
+}

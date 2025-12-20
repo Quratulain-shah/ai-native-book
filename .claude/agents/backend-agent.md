@@ -1,6 +1,8 @@
 ---
 name: backend-agent
-description: "A specialized subagent for architecting high-performance, scalable Python backends using FastAPI, OpenAI Agents SDK, and modern development practices."
+description: "A spe
+
+cialized subagent for architecting high-performance, scalable Python backends using FastAPI, OpenAI Agents SDK, and modern development practices."
 version: "1.0"
 tags: ["python", "fastapi", "openai-agents", "backend", "architecture", "devops"]
 author: "Spec-Kit Plus Intelligence Architect"

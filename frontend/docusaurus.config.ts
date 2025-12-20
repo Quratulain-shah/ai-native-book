@@ -3,243 +3,235 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
-  title: "Tech Nexus",
-  tagline: "Where Innovation Meets Automation",
-  favicon: "img/robot-favicon.svg",
+  title: 'Physical AI & Humanoid Robotics Textbook',
+  tagline: 'Bridging the gap between Digital Brain and Physical Body',
+  favicon: 'img/favicon.ico',
 
   future: {
     v4: true,
   },
 
-  url: "https://your-docusaurus-site.example.com",
-  baseUrl: "/",
+  // Set the production url of your site here
+  url: 'https://your-organization.github.io',
+  // Set the /<base>/ pathname under which your site is served
+  // For GitHub pages deployment, it is often '/<org-name>/<repo-name>/'
+  baseUrl: '/ai-native-book/',
 
-  organizationName: "facebook",
-  projectName: "docusaurus",
+  // GitHub pages deployment config.
+  organizationName: 'your-organization', // Usually your GitHub org/user name.
+  projectName: 'ai-native-book', // Usually your repo name.
 
   onBrokenLinks: "throw",
 
   i18n: {
     defaultLocale: "en",
-    locales: ["en"],
+    locales: ["en", "ur"],
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+      },
+      ur: {
+        label: 'اردو',
+        direction: 'rtl', // Right-to-left support for Urdu
+      },
+    },
   },
+
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      // Replace with your project's social card
+      image: 'img/docusaurus-social-card.jpg',
+      navbar: {
+        title: 'Physical AI Textbook',
+        logo: {
+          alt: 'Physical AI Logo',
+          src: '',
+        },
+        items: [
+          {
+            type: 'docSidebar',
+            sidebarId: 'tutorialSidebar',
+            position: 'left',
+            label: 'Textbook',
+          },
+          {
+            href: 'https://github.com/your-organization/ai-native-book',
+            label: 'GitHub',
+            position: 'right',
+          },
+          {
+            type: 'localeDropdown',
+            position: 'right',
+          },
+        ],
+      },
+      footer: {
+        style: 'dark',
+        links: [
+          {
+            title: 'Textbook',
+            items: [
+              {
+                label: 'Introduction',
+                to: '/docs/intro',
+              },
+            ],
+          },
+          {
+            title: 'Community',
+            items: [
+              {
+                label: 'Stack Overflow',
+                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              },
+              {
+                label: 'Discord',
+                href: 'https://discordapp.com/invite/docusaurus',
+              },
+              {
+                label: 'Twitter',
+                href: 'https://twitter.com/docusaurus',
+              },
+            ],
+          },
+          {
+            title: 'More',
+            items: [
+              {
+                label: 'GitHub',
+                href: 'https://github.com/your-organization/ai-native-book',
+              },
+            ],
+          },
+        ],
+        copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Textbook. Built with Docusaurus.`,
+      },
+      prism: {
+        theme: prismThemes.vsDark,
+        darkTheme: prismThemes.vsDark,
+      },
+    }),
 
   presets: [
     [
-      "classic",
-      {
+      'classic',
+      /** @type {import('@docusaurus/preset-classic').Options} */
+      ({
         docs: {
-          sidebarPath: "./sidebars.ts",
+          sidebarPath: require.resolve('./sidebars.js'),
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
           editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ["rss", "atom"],
-            xslt: true,
-          },
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
-          onInlineTags: "warn",
-          onInlineAuthors: "warn",
-          onUntruncatedBlogPosts: "warn",
-        },
+        blog: false, // Disable blog functionality
         theme: {
-          customCss: "./src/css/custom.css",
+          customCss: [
+            require.resolve('./src/css/custom.css'),
+            require.resolve('./src/css/theme.css'),
+            require.resolve('./src/css/custom-scrollbars.css'),
+          ],
         },
-      } satisfies Preset.Options,
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+        },
+      }),
     ],
   ],
 
-  themes: [
+  plugins: [
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
       {
         hashed: true,
-        language: ["en"],
-        highlightSearchTermsOnTargetPage: true,
-        explicitSearchResultPath: true,
-        indexBlog: true,
-        indexPages: true,
+        language: ['en'],
       },
     ],
   ],
 
-  themeConfig: {
-    image: "img/robotic-social-card.jpg",
-    colorMode: {
-      defaultMode: "dark",
-      respectPrefersColorScheme: true,
-    },
-    navbar: {
-      title: "ROBOTIC NEXUS",
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      // Replace with your project's social card
+      image: 'img/docusaurus-social-card.jpg',
+      navbar: {
+      title: 'Physical AI Textbook',
       logo: {
-        alt: "Robotic Nexus Logo",
-        src: "img/robot-logo.svg",
-        className: "navbar-logo-robotic",
+        alt: 'Physical AI Logo',
+        src: 'img/logo.svg',
       },
       items: [
         {
-          type: "docSidebar",
-          sidebarId: "tutorialSidebar",
-          position: "left",
-          label: "DOCS",
-          className: "nav-link-robotic",
+          type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
+          position: 'left',
+          label: 'Textbook',
         },
         {
-          to: "/blog",
-          label: "BLOG",
-          position: "left",
-          className: "nav-link-robotic",
+          href: 'https://github.com/your-organization/ai-native-book',
+          label: 'GitHub',
+          position: 'right',
         },
-        // GitHub link will be on the right
         {
-          href: "https://github.com/facebook/docusaurus",
-          label: "GITHUB",
-          position: "right",
-          className: "github-link-robotic",
+          type: 'localeDropdown',
+          position: 'right',
         },
       ],
       style: "dark",
       hideOnScroll: false,
     },
     footer: {
-      style: "dark",
-      logo: {
-        alt: "Robotic Nexus Footer Logo",
-        src: "img/robot-logo-glow.svg",
-        width: 80,
-        height: 80,
-        className: "footer-logo-robotic",
-      },
+      style: 'dark',
       links: [
         {
-          title: "TECHNOLOGY",
+          title: 'Textbook',
           items: [
             {
-              label: "AI Modules",
-              to: "/docs/ai-modules",
-              className: "footer-link-robotic",
-            },
-            {
-              label: "API Documentation",
-              to: "/docs/api",
-              className: "footer-link-robotic",
-            },
-            {
-              label: "Hardware Specs",
-              to: "/docs/hardware",
-              className: "footer-link-robotic",
-            },
-            {
-              label: "Integration Guide",
-              to: "/docs/integration",
-              className: "footer-link-robotic",
+              label: 'Introduction',
+              to: '/docs/intro',
             },
           ],
         },
         {
-          title: "RESOURCES",
+          title: 'Community',
           items: [
             {
-              label: "Tutorials",
-              to: "/tutorials",
-              className: "footer-link-robotic",
+              label: 'Stack Overflow',
+              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
             },
             {
-              label: "Showcase",
-              to: "/showcase",
-              className: "footer-link-robotic",
+              label: 'Discord',
+              href: 'https://discordapp.com/invite/docusaurus',
             },
             {
-              label: "Research Papers",
-              to: "/research",
-              className: "footer-link-robotic",
-            },
-            {
-              label: "Documentation",
-              to: "/docs",
-              className: "footer-link-robotic",
+              label: 'Twitter',
+              href: 'https://twitter.com/docusaurus',
             },
           ],
         },
         {
-          title: "COMMUNITY",
+          title: 'More',
           items: [
             {
-              label: "Discord Hub",
-              href: "https://discord.gg/robotics",
-              className: "footer-link-robotic",
-            },
-            {
-              label: "Developer Forum",
-              href: "https://forum.robotic-nexus.com",
-              className: "footer-link-robotic",
-            },
-            {
-              label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
-              className: "footer-link-robotic",
-            },
-            {
-              label: "Hackathons",
-              to: "/hackathons",
-              className: "footer-link-robotic",
-            },
-          ],
-        },
-        {
-          title: "ENTERPRISE",
-          items: [
-            {
-              label: "Solutions",
-              to: "/solutions",
-              className: "footer-link-robotic",
-            },
-            {
-              label: "Careers",
-              to: "/careers",
-              className: "footer-link-robotic",
-            },
-            {
-              label: "Support",
-              to: "/support",
-              className: "footer-ai-link",
-            },
-            {
-              label: "Contact",
-              to: "/contact",
-              className: "footer-link-robotic",
+              label: 'GitHub',
+              href: 'https://github.com/your-organization/ai-native-book',
             },
           ],
         },
       ],
-      copyright: `
-        <div class="footer-copyright-container">
-          <span>© ${new Date().getFullYear()} Robotic Nexus.</span>
-          <span class="system-status">
-            <span class="status-indicator active"></span>
-            <span class="status-text">All systems operational</span>
-          </span>
-        </div>
-      `,
+      copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Textbook. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.vsDark,
-      darkTheme: prismThemes.nightOwl,
+      darkTheme: prismThemes.vsDark,
     },
-  } satisfies Preset.ThemeConfig,
+  }),
 
   stylesheets: [
-    {
-      href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
-      type: "text/css",
-    },
-    {
-      href: "https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap",
-      type: "text/css",
-    },
+    'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap',
   ],
 };
 

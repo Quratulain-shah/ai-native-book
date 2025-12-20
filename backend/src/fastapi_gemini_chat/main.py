@@ -7,6 +7,8 @@ import traceback
 
 from .config import settings
 from .api.routes import chat
+from .rag.api import include_rag_router
+from .rag.agent_integration import initialize_rag_agent
 
 
 @asynccontextmanager
@@ -25,6 +27,14 @@ async def lifespan(app: FastAPI):
     if not groq_agent.validate_config():
         logger.error("Configuration validation failed - shutting down")
         raise RuntimeError("Invalid configuration - check environment variables")
+
+    # Initialize RAG agent with search tools
+    try:
+        initialize_rag_agent()
+        logger.info("RAG agent initialized with search tools")
+    except Exception as e:
+        logger.error(f"Failed to initialize RAG agent: {str(e)}")
+        raise
 
     yield
 
@@ -79,6 +89,9 @@ def create_app() -> FastAPI:
 
     # Include routes
     app.include_router(chat.router, prefix="/api/v1", tags=["chat"])
+
+    # Include RAG routes
+    include_rag_router(app)
 
     return app
 
