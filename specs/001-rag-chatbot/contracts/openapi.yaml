@@ -1,0 +1,69 @@
+openapi: 3.0.0
+info:
+  title: RAG Chatbot API
+  version: 1.0.0
+  description: API for the RAG chatbot to answer questions about the book content.
+paths:
+  /query/general:
+    post:
+      summary: Ask a general question
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                question:
+                  type: string
+                  example: "What is ROS 2?"
+      responses:
+        '200':
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  answer:
+                    type: string
+                  sources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        source_location:
+                          type: string
+  /query/selected-text:
+    post:
+      summary: Ask a question about a selected piece of text
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                question:
+                  type: string
+                  example: "Can you explain this in simpler terms?"
+                selected_text:
+                  type: string
+                  example: "Sim-to-real transfer is a technique used in robotics..."
+      responses:
+        '200':
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  answer:
+                    type: string
+                  sources:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        source_location:
+                          type: string

@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+openai
+google-generativeai
+qdrant-client
+psycopg2-binary
+alembic
+beautifulsoup4
+sqlalchemy
+pydantic
+python-dotenv
+python-jose[cryptography]
+deep-translator

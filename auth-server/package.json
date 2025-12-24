@@ -1,0 +1,27 @@
+{
+  "name": "auth-server",
+  "version": "1.0.0",
+  "description": "Better Auth server for Docusaurus project",
+  "type": "module",
+  "main": "server.ts",
+  "scripts": {
+    "dev": "tsx --watch server.ts",
+    "migrate": "npx better-auth migrate",
+    "generate": "npx better-auth generate"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.0.0",
+    "dotenv": "^16.6.1",
+    "hono": "^4.0.0",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "@netlify/functions": "^5.1.1",
+    "@types/better-sqlite3": "^7.6.0",
+    "@types/node": "^20.0.0",
+    "@types/pg": "^8.16.0",
+    "better-auth": "^1.4.8",
+    "tsx": "^4.0.0",
+    "typescript": "^5.9.3"
+  }
+}
