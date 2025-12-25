@@ -1,0 +1,118 @@
+openapi: 3.0.0
+info:
+  title: Physical AI and Humanized Robots API
+  description: API for the Physical AI and Humanized Robots coursebook.
+  version: 1.0.0
+servers:
+  - url: /api/v1
+paths:
+  /auth/google/login:
+    post:
+      summary: Initiates Google social login
+      responses:
+        '302':
+          description: Redirects to Google for authentication.
+  /auth/google/callback:
+    get:
+      summary: Callback for Google social login
+      responses:
+        '200':
+          description: Successfully authenticated. Returns a JWT token.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+  /books:
+    post:
+      summary: Create a new book
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+      responses:
+        '201':
+          description: Book created successfully.
+  /books/{book_id}:
+    get:
+      summary: Get a book's content
+      parameters:
+        - name: book_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The book's content.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  content:
+                    type: string
+    put:
+      summary: Update a book's content
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: book_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+      responses:
+        '200':
+          description: Book updated successfully.
+  /books/{book_id}/translate:
+    post:
+      summary: Translate a book to Urdu
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: book_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The translated book content.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  content:
+                    type: string
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

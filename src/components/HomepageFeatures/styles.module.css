@@ -1,0 +1,1461 @@
+/* Premium 3D Robotics Theme */
+
+.heroContainer {
+  position: relative;
+  min-height: 100vh;
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(0, 247, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(128, 0, 255, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #0a0a0f 0%, #0f1a2e 30%, #1a0f2e 70%, #0a0a0f 100%);
+  overflow: hidden;
+  padding: 4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Enhanced 3D Background */
+.background3D {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.robotArm {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  right: 5%;
+  top: 10%;
+  background: 
+    linear-gradient(45deg, transparent 30%, rgba(0, 247, 255, 0.15) 100%);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  animation: floatArm 8s ease-in-out infinite;
+  filter: drop-shadow(0 0 30px rgba(0, 247, 255, 0.3));
+  transform: rotateX(15deg) rotateY(20deg);
+}
+
+.floatingCircuit {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  left: 10%;
+  bottom: 10%;
+  background: 
+    radial-gradient(circle at 30% 30%, transparent 40%, rgba(64, 224, 208, 0.1) 100%),
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 247, 255, 0.1) 2px, rgba(0, 247, 255, 0.1) 4px);
+  border: 1px solid rgba(64, 224, 208, 0.3);
+  animation: rotateCircuit 30s linear infinite;
+  box-shadow: 
+    inset 0 0 50px rgba(0, 247, 255, 0.1),
+    0 0 100px rgba(0, 247, 255, 0.1);
+}
+
+.neuralNetwork {
+  position: absolute;
+  width: 600px;
+  height: 400px;
+  right: 20%;
+  top: 50%;
+  background: 
+    radial-gradient(circle at center, rgba(128, 0, 255, 0.05) 0%, transparent 70%);
+  border: 1px solid rgba(128, 0, 255, 0.2);
+  animation: pulseNetwork 4s ease-in-out infinite;
+}
+
+.geometricShapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.shape1, .shape2, .shape3, .shape4 {
+  position: absolute;
+  border: 2px solid;
+  animation: floatComplex 12s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.shape1 {
+  width: 120px;
+  height: 120px;
+  right: 25%;
+  top: 20%;
+  border-color: #00f7ff;
+  transform: rotate(45deg);
+  animation-delay: 0s;
+}
+
+.shape2 {
+  width: 180px;
+  height: 180px;
+  left: 20%;
+  top: 40%;
+  border-color: #0080ff;
+  border-radius: 50%;
+  animation-delay: 3s;
+}
+
+.shape3 {
+  width: 100px;
+  height: 100px;
+  right: 15%;
+  bottom: 30%;
+  border-color: #00ff88;
+  transform: rotate(15deg);
+  animation-delay: 6s;
+}
+
+.shape4 {
+  width: 140px;
+  height: 140px;
+  left: 30%;
+  bottom: 20%;
+  border-color: #ff00ff;
+  border-radius: 20px;
+  animation-delay: 9s;
+}
+
+.glowEffect {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: 
+    radial-gradient(circle, 
+      rgba(0, 247, 255, 0.15) 0%, 
+      rgba(128, 0, 255, 0.1) 30%, 
+      transparent 70%);
+  filter: blur(80px);
+  animation: glowPulse 8s ease-in-out infinite;
+}
+
+.particleContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #00f7ff;
+  border-radius: 50%;
+  animation: particleFloat 20s linear infinite;
+}
+
+/* Hero Content */
+.heroContent {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 6rem;
+  align-items: center;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Premium Badge */
+.premiumBadge {
+  display: inline-block;
+  margin-bottom: 3rem;
+  background: linear-gradient(90deg, #00f7ff, #0080ff, #ff00ff);
+  padding: 2px;
+  border-radius: 30px;
+  animation: badgeGlow 3s ease-in-out infinite;
+}
+
+.badgeInner {
+  background: rgba(10, 10, 15, 0.95);
+  padding: 0.8rem 2rem;
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #00f7ff;
+}
+
+.badgeIcon {
+  font-size: 1.2rem;
+  animation: spin 4s linear infinite;
+}
+
+/* Title Styling */
+.titleContainer {
+  margin-bottom: 2.5rem;
+}
+
+.heroTitle {
+  font-size: 4.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.titlePretext {
+  display: block;
+  color: #b0b0ff;
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+
+.titleGradient {
+  background: linear-gradient(90deg, #00f7ff, #0080ff, #00ff88, #ff00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  font-size: 3.8rem;
+  font-weight: 800;
+}
+
+.titleUnderline {
+  width: 300px;
+  height: 6px;
+  background: linear-gradient(90deg, #00f7ff, transparent);
+  margin-top: 1.5rem;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.underlineGlow {
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #00f7ff, transparent);
+  animation: slide 3s linear infinite;
+}
+
+.heroSubtitle {
+  font-size: 1.6rem;
+  color: #ccccff;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.subtitleHighlight {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 1.2rem 2rem;
+  border-radius: 15px;
+  border-left: 5px solid #00f7ff;
+  display: inline-block;
+  border-top: 1px solid rgba(0, 247, 255, 0.2);
+  border-right: 1px solid rgba(0, 247, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 247, 255, 0.2);
+}
+
+.taglineContainer {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 20px;
+  border: 1px solid rgba(0, 247, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.premiumTagline {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #e0e0ff;
+  text-align: center;
+}
+
+.highlight {
+  color: #00f7ff;
+  font-weight: 700;
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Enhanced CTA Buttons */
+.ctaButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 3rem 0;
+}
+
+.primaryButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 3rem;
+  background: linear-gradient(90deg, #00f7ff, #0080ff);
+  color: black;
+  border-radius: 15px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  border: none;
+  max-width: 500px;
+}
+
+.buttonGlow {
+  box-shadow: 
+    0 0 40px rgba(0, 247, 255, 0.5),
+    0 10px 30px rgba(0, 247, 255, 0.3);
+}
+
+.primaryButton:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 0 60px rgba(0, 247, 255, 0.8),
+    0 15px 40px rgba(0, 247, 255, 0.4);
+}
+
+.buttonIcon {
+  font-size: 2rem;
+}
+
+.buttonText {
+  flex: 1;
+  margin: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.buttonMain {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.buttonSub {
+  font-size: 0.9rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.buttonArrow {
+  font-size: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.primaryButton:hover .buttonArrow {
+  transform: translateX(10px);
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+}
+
+.secondaryButton, .tertiaryButton {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.2rem 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.secondaryButton {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  border: 2px solid rgba(0, 247, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.tertiaryButton {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ccccff;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.buttonWithHover:hover {
+  transform: translateY(-3px);
+  border-color: #00f7ff;
+  background: rgba(0, 247, 255, 0.1);
+}
+
+.premiumButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.2rem 2rem;
+  background: linear-gradient(90deg, #ff00ff, #ff5500);
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  max-width: 500px;
+}
+
+.premiumButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 0, 255, 0.3);
+}
+
+.premiumIcon {
+  font-size: 1.5rem;
+}
+
+.badgeNew {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff0000;
+  color: white;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.8rem;
+  border-radius: 10px;
+  font-weight: 800;
+}
+
+/* Enhanced Stats Bar */
+.statsBar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin: 4rem 0;
+}
+
+.statCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 247, 255, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.statCard:hover {
+  transform: translateY(-5px);
+  border-color: #00f7ff;
+  background: rgba(0, 247, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 247, 255, 0.1);
+}
+
+.statIcon {
+  font-size: 2.5rem;
+}
+
+.statContent {
+  flex: 1;
+}
+
+.statNumber {
+  font-size: 2.2rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #00f7ff, #0080ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+
+.statLabel {
+  color: #b0b0ff;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.3rem;
+}
+
+/* Tech Badges */
+.techBadges {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.techBadgeItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 25px;
+  border: 1px solid rgba(0, 247, 255, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.techLogo {
+  color: #00f7ff;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.techVersion {
+  color: #b0b0ff;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Enhanced Robot Preview */
+.robotPreview {
+  position: relative;
+}
+
+.previewContainer {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 25px;
+  padding: 2rem;
+  border: 1px solid rgba(0, 247, 255, 0.15);
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.robotScene {
+  position: relative;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.robotBase {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: robotFloat 10s ease-in-out infinite;
+}
+
+/* Complex Robot Design */
+.robotHead {
+  width: 140px;
+  height: 120px;
+  background: linear-gradient(135deg, #333, #555, #777);
+  margin: 0 auto;
+  border-radius: 60px 60px 30px 30px;
+  position: relative;
+  border: 3px solid #00f7ff;
+  box-shadow: 
+    inset 0 0 20px rgba(0, 247, 255, 0.3),
+    0 0 30px rgba(0, 247, 255, 0.2);
+}
+
+.robotFace {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.robotEye {
+  width: 25px;
+  height: 25px;
+  background: #00f7ff;
+  border-radius: 50%;
+  animation: eyeGlow 3s infinite;
+  box-shadow: 
+    0 0 20px #00f7ff,
+    0 0 40px #00f7ff;
+}
+
+.robotMouth {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 10px;
+  background: #ff5500;
+  border-radius: 5px;
+  animation: mouthGlow 2s infinite;
+}
+
+.robotAntenna {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 30px;
+  background: linear-gradient(to top, #ff00ff, #00f7ff);
+  border-radius: 4px;
+  animation: antennaGlow 2s infinite;
+}
+
+.robotBody {
+  margin-top: 20px;
+}
+
+.robotShoulder {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+.robotArmLeft, .robotArmRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.armJoint {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #444, #666);
+  border-radius: 50%;
+  border: 2px solid #0080ff;
+}
+
+.armSegment {
+  width: 20px;
+  height: 80px;
+  background: linear-gradient(to bottom, #555, #777);
+  border-radius: 10px;
+}
+
+.robotArmLeft {
+  animation: armSwingLeft 4s ease-in-out infinite;
+}
+
+.robotArmRight {
+  animation: armSwingRight 4s ease-in-out infinite;
+}
+
+.robotChest {
+  width: 120px;
+  height: 100px;
+  background: linear-gradient(135deg, #222, #444);
+  border-radius: 20px;
+  border: 3px solid #00ff88;
+  position: relative;
+  box-shadow: inset 0 0 30px rgba(0, 255, 136, 0.2);
+}
+
+.chestPanel {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+.chestLights {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.light {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00f7ff;
+  animation: lightPulse 1.5s infinite;
+}
+
+.light:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.light:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.robotHips {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 20px;
+}
+
+.robotLegLeft, .robotLegRight {
+  width: 25px;
+  height: 100px;
+  background: linear-gradient(to bottom, #666, #888);
+  border-radius: 12px;
+  border: 2px solid #ff00ff;
+}
+
+.robotLegLeft {
+  animation: legSwingLeft 5s ease-in-out infinite;
+}
+
+.robotLegRight {
+  animation: legSwingRight 5s ease-in-out infinite;
+}
+
+.simulationGrid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(0, 247, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 247, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+  opacity: 0.3;
+}
+
+.dataStream {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.dataPoint {
+  width: 4px;
+  height: 4px;
+  background: #00ff88;
+  border-radius: 50%;
+  animation: dataFlow 3s linear infinite;
+}
+
+.previewInfo {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.previewBadge {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff00ff, #ff5500);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.previewTitle {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.previewDesc {
+  color: #b0b0ff;
+  margin-bottom: 1.5rem;
+}
+
+.simulationControls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.controlBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background: rgba(0, 247, 255, 0.1);
+  border: 1px solid rgba(0, 247, 255, 0.3);
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.controlBtn:hover {
+  background: rgba(0, 247, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Main Content Sections */
+.mainContent {
+  background: #0a0a0f;
+  padding: 6rem 2rem;
+}
+
+.curriculumSection,
+.techSection,
+.methodologySection,
+.quickStartSection {
+  max-width: 1400px;
+  margin: 0 auto 6rem;
+}
+
+/* Curriculum Timeline */
+.curriculumTimeline {
+  position: relative;
+  padding: 4rem 0;
+}
+
+.curriculumTimeline::before {
+  content: '';
+  position: absolute;
+  left: 50px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, transparent, #00f7ff, transparent);
+}
+
+.timelineItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.timelineDot {
+  width: 100px;
+  height: 100px;
+  border: 3px solid;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  z-index: 1;
+  animation: dotPulse 2s infinite;
+}
+
+.weekNumber {
+  color: white;
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.timelineContent {
+  flex: 1;
+  margin-left: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.timelineContent:hover {
+  transform: translateX(10px);
+  border-color: #00f7ff;
+  background: rgba(0, 247, 255, 0.05);
+}
+
+.timelineContent h4 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.progressBar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1s ease;
+}
+
+/* Tech Grid */
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.techCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(0, 247, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.techCard:hover {
+  transform: translateY(-10px);
+  border-color: #00f7ff;
+  background: rgba(0, 247, 255, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 247, 255, 0.1);
+}
+
+.techIcon {
+  font-size: 3rem;
+  animation: iconFloat 4s ease-in-out infinite;
+}
+
+.techInfo {
+  flex: 1;
+}
+
+.techInfo h3 {
+  color: white;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.techInfo p {
+  color: #b0b0ff;
+  margin-bottom: 0.5rem;
+}
+
+.techHighlight {
+  color: #00f7ff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.3rem 1rem;
+  background: rgba(0, 247, 255, 0.1);
+  border-radius: 15px;
+  display: inline-block;
+}
+
+/* Methodology Section */
+.methodologySection {
+  background: linear-gradient(135deg, rgba(0, 247, 255, 0.05), rgba(128, 0, 255, 0.05));
+  border-radius: 30px;
+  padding: 4rem;
+  border: 1px solid rgba(0, 247, 255, 0.2);
+}
+
+.methodologyHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.methodologyHeader h2 {
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #00f7ff, #ff00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.methodologyHeader p {
+  color: #b0b0ff;
+  font-size: 1.2rem;
+}
+
+.flowSteps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.flowSteps::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100px;
+  right: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, #00f7ff, #ff00ff);
+  z-index: 0;
+}
+
+.flowStep {
+  flex: 1;
+  background: rgba(10, 10, 15, 0.9);
+  border: 2px solid rgba(0, 247, 255, 0.3);
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.flowStep:hover {
+  transform: translateY(-10px);
+  border-color: #00f7ff;
+  box-shadow: 0 20px 40px rgba(0, 247, 255, 0.2);
+}
+
+.stepNumber {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #00f7ff, #ff00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  min-width: 60px;
+}
+
+.stepContent h3 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.stepContent p {
+  color: #b0b0ff;
+}
+
+.stepArrow {
+  font-size: 3rem;
+  color: #00f7ff;
+  margin-left: auto;
+  animation: arrowPulse 2s infinite;
+}
+
+/* Quick Start Section */
+.quickStartSection {
+  background: linear-gradient(135deg, #0f1a2e, #1a0f2e);
+  border-radius: 30px;
+  padding: 4rem;
+  border: 1px solid rgba(0, 247, 255, 0.3);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.quickStartContent {
+  text-align: center;
+}
+
+.quickStartContent h2 {
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #00ff88, #00f7ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.quickStartContent p {
+  color: #b0b0ff;
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.downloadButton, .demoButton {
+  padding: 1.5rem 3rem;
+  border-radius: 15px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.downloadButton {
+  background: linear-gradient(90deg, #00ff88, #00aaff);
+  color: black;
+}
+
+.demoButton {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(0, 247, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.downloadButton:hover,
+.demoButton:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 247, 255, 0.3);
+}
+
+.downloadIcon, .demoIcon {
+  font-size: 1.8rem;
+}
+
+.featureList {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #b0b0ff;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.featureItem span {
+  color: #00ff88;
+  font-size: 1.3rem;
+}
+
+/* Animations */
+@keyframes floatArm {
+  0%, 100% {
+    transform: translateY(0) rotateX(15deg) rotateY(20deg);
+  }
+  50% {
+    transform: translateY(-30px) rotateX(20deg) rotateY(25deg);
+  }
+}
+
+@keyframes rotateCircuit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseNetwork {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes floatComplex {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(10px) rotate(240deg);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(100px);
+    opacity: 0;
+  }
+}
+
+@keyframes badgeGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 247, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 247, 255, 0.8);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slide {
+  0% {
+    left: -100px;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes robotFloat {
+  0%, 100% {
+    transform: translateY(0) rotateY(0deg);
+  }
+  33% {
+    transform: translateY(-20px) rotateY(10deg);
+  }
+  66% {
+    transform: translateY(10px) rotateY(-10deg);
+  }
+}
+
+@keyframes eyeGlow {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px #00f7ff,
+      0 0 40px #00f7ff;
+  }
+  50% {
+    box-shadow: 
+      0 0 40px #00f7ff,
+      0 0 80px #00f7ff;
+  }
+}
+
+@keyframes mouthGlow {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes antennaGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px #ff00ff;
+  }
+  50% {
+    box-shadow: 0 0 20px #ff00ff;
+  }
+}
+
+@keyframes armSwingLeft {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-40deg);
+  }
+  75% {
+    transform: rotate(20deg);
+  }
+}
+
+@keyframes armSwingRight {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(20deg);
+  }
+  75% {
+    transform: rotate(-40deg);
+  }
+}
+
+@keyframes legSwingLeft {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes legSwingRight {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+}
+
+@keyframes lightPulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes gridMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@keyframes dataFlow {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(0, 247, 255, 0);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 247, 255, 0.5);
+  }
+}
+
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes arrowPulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(10px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .heroContent {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  
+  .robotPreview {
+    order: -1;
+  }
+  
+  .flowSteps {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .flowSteps::before {
+    left: 50%;
+    top: 100px;
+    bottom: 100px;
+    width: 3px;
+    height: auto;
+    background: linear-gradient(to bottom, #00f7ff, #ff00ff);
+  }
+  
+  .stepArrow {
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.8rem;
+  }
+  
+  .titleGradient {
+    font-size: 2.5rem;
+  }
+  
+  .statsBar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .actionButtons {
+    flex-direction: column;
+  }
+  
+  .ctaButtons .buttonGroup {
+    flex-direction: column;
+  }
+  
+  .premiumButton,
+  .primaryButton {
+    max-width: 100%;
+  }
+}
+
+/* Global scrollbar */
+:global(::-webkit-scrollbar) {
+  width: 12px;
+}
+
+:global(::-webkit-scrollbar-track) {
+  background: #0a0a0f;
+}
+
+:global(::-webkit-scrollbar-thumb) {
+  background: linear-gradient(#00f7ff, #0080ff);
+  border-radius: 6px;
+}
+
+:global(::-webkit-scrollbar-thumb:hover) {
+  background: linear-gradient(#00ff88, #00f7ff);
+}
+
+:global(*) {
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+:global(::selection) {
+  background: rgba(0, 247, 255, 0.3);
+  color: white;
+}

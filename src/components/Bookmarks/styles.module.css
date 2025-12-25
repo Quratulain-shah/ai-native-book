@@ -1,0 +1,258 @@
+.bookmarksContainer {
+  position: fixed;
+  top: calc(5rem + 20px); /* Position below navbar which has height of 5rem */
+  right: 20px; /* Right side as requested */
+  z-index: 1000;
+  font-family: var(--ifm-font-family-base);
+}
+
+.bookmarkToggle {
+  background: linear-gradient(135deg, var(--robotic-border-color, #00ffff) 0%, var(--cyberpunk-blue, #00b3ff) 100%);
+  color: #000;
+  border: none;
+  border-radius: 24px;
+  padding: 10px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  font-family: var(--ifm-font-family-heading);
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.bookmarkToggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 255, 255, 0.5);
+}
+
+.bookmarkIcon {
+  font-size: 1.2rem;
+}
+
+.bookmarkText {
+  font-size: 0.9rem;
+}
+
+.bookmarkCount {
+  background: var(--robotic-accent-color, #00ff00);
+  color: #000;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.bookmarksPanel {
+  position: absolute;
+  top: calc(100% + 8px); /* Position right below the toggle button with some gap */
+  right: 0;
+  width: 350px;
+  max-height: 70vh;
+  background: rgba(18, 18, 24, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bookmarksHeader {
+  padding: 16px;
+  background: rgba(10, 10, 15, 0.9);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bookmarksHeader h3 {
+  margin: 0;
+  color: #ffffff;
+  font-family: var(--ifm-font-family-heading);
+  font-size: 1.2rem;
+}
+
+.addCurrentBtn {
+  background: rgba(0, 255, 0, 0.2);
+  color: var(--robotic-accent-color, #00ff00);
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.addCurrentBtn:hover:not(:disabled) {
+  background: rgba(0, 255, 0, 0.3);
+  border-color: var(--robotic-accent-color, #00ff00);
+}
+
+.addCurrentBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.emptyState {
+  padding: 40px 20px;
+  text-align: center;
+  color: #888;
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.bookmarksList {
+  padding: 10px;
+  max-height: calc(70vh - 100px);
+  overflow-y: auto;
+}
+
+.moduleGroup {
+  margin-bottom: 20px;
+}
+
+.moduleTitle {
+  margin: 0 0 10px 10px;
+  padding: 5px 10px;
+  background: rgba(0, 255, 255, 0.1);
+  border-left: 3px solid var(--robotic-border-color, #00ffff);
+  color: var(--robotic-border-color, #00ffff);
+  font-size: 0.9rem;
+  font-family: var(--ifm-font-family-heading);
+}
+
+.bookmarkItem {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.bookmarkItem:hover {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: rgba(0, 255, 255, 0.3);
+}
+
+.bookmarkLink {
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.bookmarkContent {
+  padding-right: 10px;
+}
+
+.bookmarkTitle {
+  color: #ffffff;
+  font-weight: 500;
+  margin-bottom: 4px;
+  font-size: 0.95rem;
+}
+
+.bookmarkUrl {
+  color: #888;
+  font-size: 0.8rem;
+  margin-bottom: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bookmarkTime {
+  color: #666;
+  font-size: 0.75rem;
+}
+
+.removeBtn {
+  background: rgba(255, 0, 85, 0.2);
+  color: #ff0055;
+  border: 1px solid rgba(255, 0, 85, 0.3);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.removeBtn:hover {
+  background: rgba(255, 0, 85, 0.3);
+  border-color: #ff0055;
+}
+
+/* Scrollbar styling */
+.bookmarksPanel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.bookmarksPanel::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.bookmarksPanel::-webkit-scrollbar-thumb {
+  background: var(--robotic-border-color, #00ffff);
+  border-radius: 4px;
+}
+
+.bookmarksPanel::-webkit-scrollbar-thumb:hover {
+  background: var(--robotic-accent-color, #00ff00);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .bookmarksContainer {
+    top: calc(5rem + 15px); /* Position below navbar for mobile */
+    right: 15px; /* Position on the right for mobile */
+  }
+
+  .bookmarksPanel {
+    width: 300px;
+    right: 0;
+  }
+
+  .bookmarkToggle {
+    padding: 8px 12px;
+    border-radius: 20px;
+  }
+
+  .bookmarkText {
+    display: none;
+  }
+
+  .bookmarkToggle {
+    padding: 10px;
+  }
+}
