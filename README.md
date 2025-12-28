@@ -83,7 +83,7 @@ The platform follows a "Theory → Digital Twin → Physical Deployment" pedagog
 ### Deployment Architecture
 - **Frontend**: GitHub Pages hosting
 - **Backend**: Hugging Face Spaces containerized deployment
-- **Database**: PostgreSQL/SQLite for user data and content
+-- **Database**: PostgreSQL/SQLite for user data and content
 - **Vector Store**: Qdrant for semantic search capabilities
 
 
