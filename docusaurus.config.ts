@@ -79,7 +79,7 @@ const config: Config = {
         },
 
         {
-          href: "https://github.com/DevAbdullah90/Spec-Driven-Development-Hackathon-I",
+          href: "https://github.com/Quratulain-shah/ai-native-book",
           position: "right",
           className: "github-link-robotic",
           html: `
@@ -147,81 +147,6 @@ const config: Config = {
       },
       links: [
         {
-          title: "COURSE",
-          items: [
-            {
-              label: "Overview",
-              to: "/docs/overview",
-              className: "footer-link-robotic",
-            },
-            {
-              label: "Hardware Requirements",
-              to: "/docs/hardware-requirements",
-              className: "footer-link-robotic",
-            },
-            {
-              label: "Neural Networks",
-              to: "/docs/neural-networks",
-              className: "footer-link-robotic",
-            },
-            {
-              label: "Integration Guide",
-              to: "/docs/integration",
-              className: "footer-link-robotic",
-            },
-          ],
-        },
-        {
-          title: "RESOURCES",
-          items: [
-            {
-              label: "Tutorials",
-              to: "/tutorials",
-              className: "footer-link-robotic",
-            },
-            {
-              label: "Documentation",
-              to: "/docs",
-              className: "footer-link-robotic",
-            },
-            {
-              label: "Research Papers",
-              to: "/research",
-              className: "footer-link-robotic",
-            },
-            {
-              label: "Showcase",
-              to: "/showcase",
-              className: "footer-link-robotic",
-            },
-          ],
-        },
-        {
-          title: "COMMUNITY",
-          items: [
-            {
-              label: "GitHub Discussions",
-              href: "https://github.com/DevAbdullah90/Spec-Driven-Development-Hackathon-I/discussions",
-              className: "footer-link-robotic",
-            },
-            {
-              label: "GitHub Issues",
-              href: "https://github.com/DevAbdullah90/Spec-Driven-Development-Hackathon-I/issues",
-              className: "footer-link-robotic",
-            },
-            {
-              label: "Discord",
-              href: "https://discord.gg/example",
-              className: "footer-link-robotic",
-            },
-            {
-              label: "Hackathons",
-              to: "/hackathons",
-              className: "footer-link-robotic",
-            },
-          ],
-        },
-        {
           title: "MORE",
           items: [
             {
@@ -230,19 +155,9 @@ const config: Config = {
               className: "footer-link-robotic",
             },
             {
-              label: "Contact",
-              to: "/contact",
-              className: "footer-link-robotic",
-            },
-            {
               label: "GitHub Repo",
-              href: "https://github.com/DevAbdullah90/Spec-Driven-Development-Hackathon-I",
+              href: "https://github.com/Quratulain-shah/ai-native-book",
               className: "footer-link-robotic",
-            },
-            {
-              label: "Support",
-              to: "/support",
-              className: "footer-ai-link",
             },
           ],
         },
