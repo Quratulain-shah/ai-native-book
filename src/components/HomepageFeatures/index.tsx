@@ -88,21 +88,21 @@ function HomepageHeader() {
             <div className={styles.buttonGroup}>
               <Link
                 className={clsx(styles.secondaryButton, styles.buttonWithHover)}
-                to="/docs/ros2-fundamentals"
+                to="/docs/overview"
               >
                 <span className={styles.buttonIcon}>🤖</span>
                 <span>ROS 2 Fundamentals</span>
               </Link>
               <Link
                 className={clsx(styles.tertiaryButton, styles.buttonWithHover)}
-                to="/docs/digital-twin"
+                to="/docs/overview"
               >
                 <span className={styles.buttonIcon}>🌐</span>
                 <span>Digital Twin</span>
               </Link>
             </div>
 
-            <Link className={styles.premiumButton} to="/docs/nvidia-isaac">
+            <Link className={styles.premiumButton} to="/docs/overview">
               <span className={styles.premiumIcon}>🔥</span>
               <span>NVIDIA Isaac Ecosystem</span>
               <span className={styles.badgeNew}>NEW</span>
@@ -423,12 +423,12 @@ export default function Home(): ReactNode {
               <div className={styles.actionButtons}>
                 <Link
                   className={styles.downloadButton}
-                  to="/docs/getting-started"
+                  to="/docs/overview"
                 >
                   <span className={styles.downloadIcon}>📥</span>
                   Download Full Curriculum
                 </Link>
-                <Link className={styles.demoButton} to="/demos">
+                <Link className={styles.demoButton} to="/docs/overview">
                   <span className={styles.demoIcon}>🎮</span>
                   View Live Demos
                 </Link>
