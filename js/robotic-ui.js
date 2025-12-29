@@ -345,83 +345,89 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Add Enhanced Navigation Links to existing navbar WITHOUT replacing it
 function addEnhancedNavLinks() {
-  // Find existing navbar
-  const navbar = document.querySelector(".navbar__items--right");
+  setTimeout(() => {
+    // Find existing navbar
+    const navbar = document.querySelector(".navbar__items--right");
 
-  if (!navbar) return;
+    if (!navbar) {
+      console.error("Could not find navbar to add enhanced links.");
+      return;
+    }
+    console.log("Found navbar:", navbar);
 
-  // Create container for enhanced links
-  const enhancedLinksContainer = document.createElement("div");
-  enhancedLinksContainer.className = "enhanced-nav-links";
-  enhancedLinksContainer.style.cssText = `
+    // Create container for enhanced links
+    const enhancedLinksContainer = document.createElement("div");
+    enhancedLinksContainer.className = "enhanced-nav-links";
+    enhancedLinksContainer.style.cssText = `
     display: flex;
     align-items: center;
     gap: 10px;
     margin-left: auto;
   `;
 
-  // Enhanced links data
-  const enhancedLinks = [
-    {
-      icon: "🧮",
-      text: "Calculator",
-      action: "openCalculator",
-      type: "button",
-    },
-    {
-      icon: "📝",
-      text: "Notes",
-      action: "openNotes",
-      type: "button",
-    },
-    {
-      icon: "⭐",
-      text: "Bookmarks",
-      href: "/components/Bookmarks",
-      type: "link",
-    },
-    {
-      icon: "🔧",
-      text: "Tools",
-      action: "toggleSidebar",
-      type: "button",
-      className: "quick-tools-btn",
-    },
-  ];
+    // Enhanced links data
+    const enhancedLinks = [
+      {
+        icon: "🧮",
+        text: "Calculator",
+        action: "openCalculator",
+        type: "button",
+      },
+      {
+        icon: "📝",
+        text: "Notes",
+        action: "openNotes",
+        type: "button",
+      },
+      {
+        icon: "⭐",
+        text: "Bookmarks",
+        href: "/components/Bookmarks",
+        type: "link",
+      },
+      {
+        icon: "🔧",
+        text: "Tools",
+        action: "toggleSidebar",
+        type: "button",
+        className: "quick-tools-btn",
+      },
+    ];
 
-  // Create and append enhanced links
-  enhancedLinks.forEach((link) => {
-    const navItem = document.createElement(
-      link.type === "link" ? "a" : "button"
-    );
-    navItem.className = `navbar__item enhanced-nav-item ${
-      link.className || ""
-    }`;
+    // Create and append enhanced links
+    enhancedLinks.forEach((link) => {
+      const navItem = document.createElement(
+        link.type === "link" ? "a" : "button"
+      );
+      navItem.className = `navbar__item enhanced-nav-item ${
+        link.className || ""
+      }`;
 
-    if (link.type === "link") {
-      navItem.href = link.href;
-    } else {
-      navItem.setAttribute("data-action", link.action);
-    }
+      if (link.type === "link") {
+        navItem.href = link.href;
+      } else {
+        navItem.setAttribute("data-action", link.action);
+      }
 
-    navItem.innerHTML = `
+      navItem.innerHTML = `
       <span class="nav-item-icon">${link.icon}</span>
       <span class="navbar__link">${link.text}</span>
     `;
 
-    // Add click handlers for buttons
-    if (link.type === "button") {
-      navItem.addEventListener("click", (e) => {
-        e.preventDefault();
-        handleNavAction(link.action);
-      });
-    }
+      // Add click handlers for buttons
+      if (link.type === "button") {
+        navItem.addEventListener("click", (e) => {
+          e.preventDefault();
+          handleNavAction(link.action);
+        });
+      }
 
-    enhancedLinksContainer.appendChild(navItem);
-  });
+      enhancedLinksContainer.appendChild(navItem);
+    });
 
-  // Insert enhanced links before existing items
-  navbar.insertBefore(enhancedLinksContainer, navbar.firstChild);
+    // Insert enhanced links before existing items
+    navbar.insertBefore(enhancedLinksContainer, navbar.firstChild);
+  }, 1000);
 }
 
 function handleNavAction(action) {
