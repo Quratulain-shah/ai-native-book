@@ -10,13 +10,13 @@ This page demonstrates the new content enhancement features implemented for the 
 
 Here's a standard Docusaurus card that should now appear as a holographic card:
 
-<Card>
+<div class="card">
   <div class="card">
     <h3>Holographic Card Test</h3>
     <p>This card should have a glassmorphic effect with a scanline animation.</p>
     <p>Look for the blue/cyan border and the subtle scanline effect moving across the card.</p>
   </div>
-</Card>
+</div>
 
 ## Transmission Blockquotes
 
