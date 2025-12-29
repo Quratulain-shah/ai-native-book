@@ -11,11 +11,11 @@ const config: Config = {
     v4: true,
   },
 
-  url: "https://quratulain-bilal.github.io",
-  baseUrl: "/Spec-Driven-Development-Hackathon-I/",
+  url: "https://Quratulain-shah.github.io",
+  baseUrl: "/ai-native-book/",
 
-  organizationName: "Anna",
-  projectName: "Spec-Driven-Development-Hackathon-I",
+  organizationName: "Quratulain-shah",
+  projectName: "ai-native-book",
 
   onBrokenLinks: "throw",
 
@@ -31,7 +31,7 @@ const config: Config = {
         docs: {
           sidebarPath: "./sidebars.ts",
           editUrl:
-            "https://github.com/DevAbdullah90/Spec-Driven-Development-Hackathon-I/tree/main/",
+            "https://github.com/Quratulain-shah/ai-native-book/tree/main/",
         },
         blog: {
           showReadingTime: true,
@@ -40,7 +40,7 @@ const config: Config = {
             xslt: true,
           },
           editUrl:
-            "https://github.com/DevAbdullah90/Spec-Driven-Development-Hackathon-I/tree/main/",
+            "https://github.com/Quratulain-shah/ai-native-book/tree/main/",
           onInlineTags: "warn",
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "warn",
