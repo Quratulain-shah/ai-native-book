@@ -326,7 +326,7 @@ const config: Config = {
       async: true,
     },
     {
-      src: "/Spec-Driven-Development-Hackathon-I/js/robotic-ui.js",
+      src: "/js/robotic-ui.js",
       async: true,
       defer: true,
     },
