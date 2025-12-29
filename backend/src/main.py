@@ -17,7 +17,8 @@ load_dotenv(dotenv_path=env_path)
 from .database import SessionLocal, Base, engine, database_available, get_db
 from . import schemas
 from .services.qdrant_service import QdrantService
-from .services.openai_service import OpenAIservice
+from .services.openai_service import GroqService
+from .services.gemini_service import GeminiService
 from .services import book_service
 from .services import translation_service
 from . import models
@@ -48,13 +49,22 @@ app.add_middleware(
 
 # Initialize services
 try:
-    openai_service = OpenAIservice(api_key=os.getenv("OPENAI_API_KEY"))
-    openai_available = True
-    logger.info("OpenAI/Grok service initialized successfully.")
+    groq_service = GroqService(api_key=os.getenv("GROQ_API_KEY"))
+    groq_available = True
+    logger.info("GROQ text generation service initialized successfully.")
 except Exception as e:
-    logger.error(f"OpenAI/Grok service initialization failed: {e}")
-    openai_service = None
-    openai_available = False
+    logger.error(f"GROQ service initialization failed: {e}")
+    groq_service = None
+    groq_available = False
+
+try:
+    gemini_service = GeminiService(api_key=os.getenv("GEMINI_API_KEY"))
+    gemini_available = True
+    logger.info("Gemini embedding service initialized successfully.")
+except Exception as e:
+    logger.error(f"Gemini embedding service initialization failed: {e}")
+    gemini_service = None
+    gemini_available = False
 
 try:
     qdrant_service = QdrantService(
@@ -76,7 +86,8 @@ def read_root():
     logger.info("Root endpoint accessed.")
     return {
         "message": "RAG Chatbot API is running!",
-        "openai_available": openai_available,
+        "groq_available": groq_available,
+        "gemini_available": gemini_available,
         "qdrant_available": qdrant_available,
         "database_available": database_available
     }
@@ -88,24 +99,29 @@ async def query_general(
 ):
     logger.info(f"General query received: {request.question}")
     try:
-        if not openai_available:
-            raise HTTPException(status_code=503, detail="OpenAI service is not available.")
-        
+        if not groq_available:
+            raise HTTPException(status_code=503, detail="GROQ service is not available.")
+
         if not qdrant_available:
             prompt_for_llm = f"You are an expert in Physical AI and Humanoid Robotics. Answer the following question: {request.question}"
-            response_from_llm = openai_service.generate_text(prompt_for_llm)
+            response_from_llm = groq_service.generate_text(prompt_for_llm)
             return schemas.GeneralQueryResponse(answer=response_from_llm, sources=[])
-        
+
         off_topic_keywords = ["weather", "time", "date"]
         if any(keyword in request.question.lower() for keyword in off_topic_keywords):
             return schemas.GeneralQueryResponse(answer="I can only answer questions related to Physical AI and Humanoid Robotics.", sources=[])
 
-        query_embedding = openai_service.get_embedding(request.question)
+        # Use Gemini for embeddings
+        if not gemini_available:
+            raise HTTPException(status_code=503, detail="Gemini embedding service is not available.")
+
+        query_embedding = gemini_service.get_embedding(request.question)
+
         if not query_embedding:
             raise HTTPException(status_code=500, detail="Failed to get embedding.")
 
         search_result = qdrant_service.search(query_vector=query_embedding, limit=3)
-        
+
         relevant_chunks = []
         if search_result.hits:
             for hit in search_result.hits:
@@ -113,15 +129,15 @@ async def query_general(
                     "content": hit.payload.get("content", "N/A"),
                     "source_location": hit.payload.get("source_location", "N/A")
                 })
-        
+
         if not relevant_chunks:
             prompt_for_llm = f"You are an expert in Physical AI and Humanoid Robotics. Answer the following question: {request.question}"
-            response_from_llm = openai_service.generate_text(prompt_for_llm)
+            response_from_llm = groq_service.generate_text(prompt_for_llm)
             return schemas.GeneralQueryResponse(answer=response_from_llm, sources=[])
-        
+
         context_text = " ".join([f"{chunk['content']} (Source: {chunk['source_location']})\n" for chunk in relevant_chunks])
         prompt_for_llm = f"Based on the following context, answer the question: \n\nContext:\n{context_text}\n\nQuestion: {request.question}"
-        response_from_llm = openai_service.generate_text(prompt_for_llm)
+        response_from_llm = groq_service.generate_text(prompt_for_llm)
         
         formatted_sources = [schemas.QueryResponseSource(source_location=chunk['source_location']) for chunk in relevant_chunks]
         return schemas.GeneralQueryResponse(answer=response_from_llm, sources=formatted_sources)
@@ -139,12 +155,12 @@ async def query_selected_text(
 ):
     logger.info(f"Selected text query received.")
     try:
-        if not openai_available:
-            raise HTTPException(status_code=503, detail="OpenAI service is not available.")
-        
+        if not groq_available:
+            raise HTTPException(status_code=503, detail="GROQ service is not available.")
+
         prompt_for_llm = f"You are an assistant that explains text snippets. Based ONLY on the following text, answer the user's question. If the answer is not present in the text, state that you cannot answer based on the provided information.\n\nProvided Text:\n{request.selected_text}\n\nQuestion: {request.question}"
-        response_from_llm = openai_service.generate_text(prompt_for_llm)
-        
+        response_from_llm = groq_service.generate_text(prompt_for_llm)
+
         return schemas.SelectedTextQueryResponse(answer=response_from_llm, sources=[])
 
     except HTTPException as e:
@@ -195,7 +211,13 @@ async def create_book_endpoint(book: schemas.BookCreate, db: Session = Depends(g
     current_user_id = 1 
     logger.info(f"Create book request for user {current_user_id} with title: {book.title}")
     try:
-        db_book, db_book_content = book_service.create_book(db=db, book=book, user_id=current_user_id)
+        db_book, db_book_content = book_service.create_book(
+            db=db,
+            book=book,
+            user_id=current_user_id,
+            qdrant_service=qdrant_service if qdrant_available else None,
+            gemini_service=gemini_service if gemini_available else None
+        )
         logger.info(f"Book created successfully with ID: {db_book.id}")
         return db_book
     except HTTPException as e:

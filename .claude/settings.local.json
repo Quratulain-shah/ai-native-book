@@ -99,7 +99,11 @@
       "Bash(dir *.env)",
       "Bash(pip install -r requirements.txt)",
       "Bash(uvicorn src.main:app --host 0.0.0.0 --port 8000)",
-      "Bash(taskkill /f /pid 33072)"
+      "Bash(taskkill /f /pid 33072)",
+      "Bash(pip install:*)",
+      "Bash(pip show:*)",
+      "Bash(python:*)",
+      "Bash(curl:*)"
     ]
   }
 }

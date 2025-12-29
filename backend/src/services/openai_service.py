@@ -1,62 +1,33 @@
 """
-Service for generating embeddings using Gemini and text completions using GROQ.
+Service for text completions using GROQ (Grok models).
+Embeddings are handled by GeminiService.
 """
 import os
-from typing import List, Optional
+from typing import Optional
 from openai import OpenAI
-import google.generativeai as genai
 
 
-class OpenAIservice:
-    """Service class for interacting with GROQ for text generation and Gemini for embeddings."""
+class GroqService:
+    """Service class for interacting with GROQ for text generation."""
 
     def __init__(self, api_key: Optional[str] = None):
         """
-        Initialize services for GROQ (text generation) and Gemini (embeddings).
+        Initialize GROQ client for text generation.
 
         Args:
-            api_key: API key. If not provided, will use GROQ_API_KEY or GEMINI_API_KEY env vars.
+            api_key: API key for GROQ. If not provided, will use GROQ_API_KEY env var.
         """
-        # Initialize GROQ client for text generation (Grok-like models)
-        self.groq_api_key = os.getenv("GROQ_API_KEY") or os.getenv("GROK_API_KEY")
+        self.groq_api_key = api_key or os.getenv("GROQ_API_KEY")
         if not self.groq_api_key:
-            raise ValueError("GROQ or GROK API key is required for text generation")
+            raise ValueError("GROQ_API_KEY is required for text generation")
 
-        self.groq_base_url = os.getenv("GROQ_BASE_URL", os.getenv("GROK_BASE_URL", "https://api.groq.com/openai/v1"))
-        self.groq_client = OpenAI(api_key=self.groq_api_key, base_url=self.groq_base_url)
-        self.chat_model = os.getenv("GROQ_MODEL", os.getenv("CHAT_MODEL", "llama-3.1-8b-instant"))
+        self.groq_client = OpenAI(
+            api_key=self.groq_api_key,
+            base_url="https://api.groq.com/openai/v1"
+        )
+        self.chat_model = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
+        print("GROQ text generation service initialized successfully.")
 
-        # Initialize Gemini client for embeddings
-        self.gemini_api_key = os.getenv("GEMINI_API_KEY") or api_key
-        if not self.gemini_api_key:
-            raise ValueError("GEMINI API key is required for embeddings")
-
-        genai.configure(api_key=self.gemini_api_key)
-        self.embedding_model_name = "embedding-001"
-
-        print("GROQ and Gemini services initialized successfully.")
-    
-    def get_embedding(self, text: str) -> Optional[List[float]]:
-        """
-        Generate embedding for the given text using Gemini.
-
-        Args:
-            text: Text to generate embedding for
-
-        Returns:
-            List of floats representing the embedding, or None if failed
-        """
-        try:
-            result = genai.embed_content(
-                model=self.embedding_model_name,
-                content=text,
-                task_type="retrieval_document"
-            )
-            return result['embedding']
-        except Exception as e:
-            print(f"Error generating embedding with Gemini: {e}")
-            return None
-    
     def generate_text(self, prompt: str, max_tokens: int = 500) -> str:
         """
         Generate text completion using GROQ API (Grok-like models).

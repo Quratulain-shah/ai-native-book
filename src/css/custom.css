@@ -1534,7 +1534,7 @@ main {
 .table-of-contents::before {
   content: 'NAVIGATION SYSTEM';
   position: absolute;
-  top: -18px;
+  top: 1px;
   left: 20px;
   background: linear-gradient(45deg, var(--robotic-border-color), var(--robotic-accent-color));
   color: #000;

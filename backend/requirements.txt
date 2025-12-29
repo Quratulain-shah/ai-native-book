@@ -11,3 +11,4 @@ pydantic
 python-dotenv
 python-jose[cryptography]
 deep-translator
+sentence-transformers

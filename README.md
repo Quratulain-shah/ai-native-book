@@ -99,7 +99,7 @@ cp .env.example .env
 # (Edit .env with your OpenAI and Qdrant keys)
 
 # Run the server
-uvicorn src.main:app --reload
+
 
   cd auth-server
 

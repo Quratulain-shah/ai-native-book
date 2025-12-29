@@ -52,7 +52,7 @@ class QdrantService:
             if self.collection_name not in collection_names:
                 self.client.create_collection(
                     collection_name=self.collection_name,
-                    vectors_config=VectorParams(size=1536, distance=Distance.COSINE)
+                    vectors_config=VectorParams(size=768, distance=Distance.COSINE)
                 )
                 print(f"Created collection: {self.collection_name}")
         except Exception as e:
