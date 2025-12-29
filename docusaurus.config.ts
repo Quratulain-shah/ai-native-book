@@ -225,7 +225,7 @@ const config: Config = {
           title: "MORE",
           items: [
             {
-              label:.About Me",
+              label: "About Me",
               to: "/about",
               className: "footer-link-robotic",
             },
