@@ -343,6 +343,11 @@ document.addEventListener("DOMContentLoaded", function () {
   enhancedMainContentInteractions();
 });
 
+function useBaseUrl(path) {
+  const baseUrl = window.docusaurus.baseUrl;
+  return baseUrl + path.replace(/^\//, '');
+}
+
 // Add Enhanced Navigation Links to existing navbar WITHOUT replacing it
 function addEnhancedNavLinks() {
   setTimeout(() => {
@@ -382,7 +387,7 @@ function addEnhancedNavLinks() {
       {
         icon: "⭐",
         text: "Bookmarks",
-        href: "/components/Bookmarks",
+        href: useBaseUrl("/components/Bookmarks"),
         type: "link",
       },
       {
@@ -649,19 +654,19 @@ function createRightSidebarToggleSystem() {
       <div class="sidebar-section">
         <h4>Navigation</h4>
         <div class="content-nav">
-          <a href="/" class="nav-item" data-nav="home">
+          <a href="${useBaseUrl("/")}" class="nav-item" data-nav="home">
             <i class="fas fa-home"></i>
             <span>Home</span>
           </a>
-          <a href="/docs" class="nav-item" data-nav="docs">
+          <a href="${useBaseUrl("/docs")}" class="nav-item" data-nav="docs">
             <i class="fas fa-book"></i>
             <span>Documentation</span>
           </a>
-          <a href="/components" class="nav-item" data-nav="components">
+          <a href="${useBaseUrl("/components")}" class="nav-item" data-nav="components">
             <i class="fas fa-cube"></i>
             <span>Components</span>
           </a>
-          <a href="/components/bookmarks" class="nav-item active" data-nav="bookmarks">
+          <a href="${useBaseUrl("/components/bookmarks")}" class="nav-item active" data-nav="bookmarks">
             <i class="fas fa-bookmark"></i>
             <span>Bookmarks</span>
             <span class="nav-status">⭐</span>
