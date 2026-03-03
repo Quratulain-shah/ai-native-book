@@ -76,7 +76,7 @@ export default function PageTranslator() {
         }
 
         // Use local backend and include credentials for Auth check
-        const response = await fetch('http://localhost:8000/translate-text', {
+        const response = await fetch('https://annashah-physical-ai-backend.hf.space/translate-text', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text: textToTranslate, language: 'ur' }),
@@ -128,7 +128,7 @@ export default function PageTranslator() {
             const originalText = textNode.nodeValue || '';
             if (originalText.trim()) {
                 try {
-                    const response = await fetch('http://localhost:8000/translate-text', {
+                    const response = await fetch('https://annashah-physical-ai-backend.hf.space/translate-text', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ text: originalText, language: 'ur' }),
@@ -185,7 +185,7 @@ export default function PageTranslator() {
 
     } catch (error) {
         console.error("Translation failed:", error);
-        alert("Failed to translate page. Ensure backend is running at http://localhost:8000");
+        alert("Failed to translate page. Please try again later");
     } finally {
         setIsTranslating(false);
     }
@@ -209,7 +209,7 @@ export default function PageTranslator() {
       // Process each chunk with translation
       const translatedChunks = [];
       for (const chunk of chunks) {
-        const response = await fetch('http://localhost:8000/translate-text', {
+        const response = await fetch('https://annashah-physical-ai-backend.hf.space/translate-text', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ text: chunk, language: 'ur' }),
@@ -306,7 +306,7 @@ export default function PageTranslator() {
       }, 100);
     } catch (error) {
       console.error("Translation of large content failed:", error);
-      alert("Failed to translate large page content. Ensure backend is running at http://localhost:8000");
+      alert("Failed to translate large page content. Please try again later");
     }
   };
 

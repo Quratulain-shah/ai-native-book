@@ -1,7 +1,7 @@
 import { createAuthClient } from "better-auth/react";
 
 export const authClient = createAuthClient({
-    baseURL: "http://localhost:4000"
+    baseURL: "https://annashah-physical-ai-auth.hf.space"
 });
 
 export const getSessionToken = async () => {

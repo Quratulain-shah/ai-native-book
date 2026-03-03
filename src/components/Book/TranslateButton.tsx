@@ -24,7 +24,7 @@ const TranslateButton: React.FC<TranslateButtonProps> = ({ bookId, onTranslate }
       }
 
       // Direct call to backend, matching ViewBook.tsx pattern
-      const response = await fetch(`http://localhost:8000/books/${bookId}/translate`, {
+      const response = await fetch(`https://annashah-physical-ai-backend.hf.space/books/${bookId}/translate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

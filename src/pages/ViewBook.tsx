@@ -40,7 +40,7 @@ const ViewBookPage: React.FC = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`https://abdullah9873-physical-ai-backend.hf.space/books/${book_id}`);
+      const response = await fetch(`https://annashah-physical-ai-backend.hf.space/books/${book_id}`);
       if (!response.ok) {
         throw new Error('Failed to fetch book content.');
       }

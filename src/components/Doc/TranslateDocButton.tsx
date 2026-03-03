@@ -32,7 +32,7 @@ const TranslateDocButton: React.FC<TranslateDocButtonProps> = ({ onTranslate }) 
             const textContent = article.innerText;
 
             // Call backend translation endpoint
-            const response = await fetch('http://localhost:8000/translate-text', {
+            const response = await fetch('https://annashah-physical-ai-backend.hf.space/translate-text', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -29,7 +29,7 @@ const Chatbot = ({ selectedText }) => {
 
     try {
       // Backend API URL
-      const API_BASE_URL = "http://localhost:8000";
+      const API_BASE_URL = "https://annashah-physical-ai-backend.hf.space";
       const endpoint = isSelectedTextQuery ? '/query/selected-text' : '/query/general';
       const payload = isSelectedTextQuery
         ? { question: queryText, selected_text: selectedText }
