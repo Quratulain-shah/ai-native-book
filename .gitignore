@@ -12,8 +12,28 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+venv/
+.venv/
 
-# Other
+# Environment files (NEVER commit secrets)
 .env
+.env.local
+.env.production
+backend/.env
+auth-server/.env
+backend.env
+
+# Database files
 *.db
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
 nul
+
+# Dist
+dist/

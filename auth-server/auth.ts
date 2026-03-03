@@ -3,7 +3,8 @@ import { Pool } from "pg";
 import * as dotenv from "dotenv";
 import path from "path";
 
-// Load environment variables from the root .env file and backend .env as fallback
+// Load environment variables - try local .env first, then fallback paths
+dotenv.config();
 dotenv.config({ path: path.resolve(process.cwd(), "../.env") });
 dotenv.config({ path: path.resolve(process.cwd(), "../backend/.env") });
 
@@ -12,6 +13,8 @@ if (!process.env.DATABASE_URL) {
 } else {
     console.log("Database Driver: Using PostgreSQL with connection string starting with: " + process.env.DATABASE_URL.substring(0, 15) + "...");
 }
+
+const isProduction = process.env.NODE_ENV === "production";
 
 export const auth = betterAuth({
     database: new Pool({
@@ -23,16 +26,23 @@ export const auth = betterAuth({
     emailAndPassword: {
         enabled: true,
     },
-    trustedOrigins: ["http://localhost:3000", "https://gemini-auth-server-demo.netlify.app", "https://devabdullah90.github.io"],
+    trustedOrigins: [
+        "http://localhost:3000",
+        "https://gemini-auth-server-demo.netlify.app",
+        "https://devabdullah90.github.io",
+        "https://quratulain-shah.github.io",
+        "https://ai-native-book.vercel.app",
+        ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : []),
+    ],
     advanced: {
         cookiePrefix: "better-auth",
         crossSubDomainCookies: {
-            enabled: false  // Disable for local development
+            enabled: false,
         },
         defaultCookieAttributes: {
-            sameSite: "lax",  // Changed for local development
-            secure: false,    // Changed for local development
-            httpOnly: true
-        }
-    }
+            sameSite: isProduction ? "none" : "lax",
+            secure: isProduction,
+            httpOnly: true,
+        },
+    },
 });
