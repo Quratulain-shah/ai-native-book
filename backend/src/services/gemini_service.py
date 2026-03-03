@@ -11,7 +11,7 @@ class GeminiService:
         if not self.api_key:
             raise ValueError("GEMINI_API_KEY is required")
         genai.configure(api_key=self.api_key)
-        self.model_name = "models/embedding-001"
+        self.model_name = "models/text-embedding-004"
         logger.info("GeminiService initialized for embeddings")
 
     def get_embedding(self, text: str) -> list:
