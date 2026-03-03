@@ -11,8 +11,8 @@ const config: Config = {
     v4: true,
   },
 
-  url: "https://Quratulain-shah.github.io",
-  baseUrl: "/ai-native-book/",
+  url: "https://ai-native-book.vercel.app",
+  baseUrl: "/",
 
   organizationName: "Quratulain-shah",
   projectName: "ai-native-book",
