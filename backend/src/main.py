@@ -41,7 +41,7 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     # Allow explicit frontend origin to support credentials (cookies)
-    allow_origins=["http://localhost:3000", "http://localhost:3001", "http://127.0.0.1:3000", "https://devabdullah90.github.io"],
+    allow_origins=["http://localhost:3000", "http://localhost:3001", "http://127.0.0.1:3000", "https://devabdullah90.github.io", "https://ai-native-book-ten.vercel.app", "https://ai-native-book.vercel.app", "https://quratulain-shah.github.io"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
